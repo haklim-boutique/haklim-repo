@@ -1,0 +1,15 @@
+{
+  "name": "haklim-fashions",
+  "version": "1.0.0",
+  "description": "Dependencies and controls",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "NovaStac Dev",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.4"
+  }
+}
