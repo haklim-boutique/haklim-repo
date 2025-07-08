@@ -11,6 +11,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Endpoint to get products
 app.use('/fetch', productRoutes);
 
+app.get('/awake', (req, res) => {
+  res.send('System Awoken');
+});
 
 // Serve index.html for the main site
 app.get('/', (req, res) => {
