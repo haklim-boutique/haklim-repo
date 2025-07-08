@@ -23,6 +23,7 @@
             --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.15);
             --input-bg: rgba(255, 255, 255, 0.9);
+            --discount-red: #e68739;
         }
 
         * {
@@ -393,6 +394,7 @@
             position: relative;
             overflow: hidden;
             height: 350px;
+            cursor: pointer;
         }
 
         .product-image img {
@@ -417,6 +419,20 @@
             font-weight: 500;
             letter-spacing: 0.5px;
             text-transform: uppercase;
+            z-index: 2;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--discount-red);
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 3px;
+            z-index: 2;
         }
 
         .product-info {
@@ -815,6 +831,132 @@
             color: var(--gold);
         }
 
+        /* Product Detail Modal */
+        .product-detail-modal .modal-content {
+            max-width: 900px;
+            padding: 30px;
+        }
+
+        .product-detail-container {
+            display: flex;
+            gap: 30px;
+        }
+
+        .product-detail-images {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .product-main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            background-color: white;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .product-thumbnails {
+            display: flex;
+            gap: 10px;
+        }
+
+        .product-thumbnail {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 1px solid var(--taupe);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .product-thumbnail:hover, .product-thumbnail.active {
+            border-color: var(--gold);
+        }
+
+        .product-detail-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .product-detail-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: var(--charcoal);
+        }
+
+        .product-detail-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: var(--taupe);
+            font-size: 14px;
+        }
+
+        .product-detail-price {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .product-detail-price .old-price {
+            text-decoration: line-through;
+            font-size: 18px;
+            color: var(--taupe);
+            margin-right: 10px;
+        }
+
+        .product-detail-discount {
+            display: inline-block;
+            background-color: var(--discount-red);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .product-detail-stock {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border-radius: 3px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .product-detail-description {
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .product-detail-features {
+            margin-bottom: 25px;
+        }
+
+        .product-detail-features h4 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .product-detail-features ul {
+            padding-left: 20px;
+        }
+
+        .product-detail-features li {
+            margin-bottom: 8px;
+        }
+
+        .product-detail-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
         /* Cart Modal */
         .cart-items {
             margin: 20px 0;
@@ -921,22 +1063,22 @@
         }
 
         /* Checkout Modal */
-        .checkout-form .form-group {
-            margin-bottom: 25px;
+        #checkout-form .form-group {
+            margin-bottom: 10px;
         }
 
-        .checkout-form label {
+        #checkout-form label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 2px;
             font-weight: 500;
             color: var(--charcoal);
         }
 
-        .checkout-form input, 
-        .checkout-form select,
-        .checkout-form textarea {
+        #checkout-form input, 
+        #checkout-form select,
+        #checkout-form textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 8px 12px;
             border: 1px solid var(--taupe);
             font-family: 'Montserrat', sans-serif;
             background-color: var(--input-bg);
@@ -945,9 +1087,9 @@
             font-size: 15px;
         }
 
-        .checkout-form input:focus, 
-        .checkout-form select:focus,
-        .checkout-form textarea:focus {
+        #checkout-form input:focus, 
+        #checkout-form select:focus,
+        #checkout-form textarea:focus {
             outline: none;
             border-color: var(--gold);
             box-shadow: 0 0 0 2px rgba(200, 182, 135, 0.2);
@@ -963,23 +1105,22 @@
         }
 
         .address-fields {
-            background-color: rgba(216, 207, 198, 0.1);
-            padding: 20px;
+            background-color: rgb(247, 229, 207);
+            padding: 8px;
             border-radius: 5px;
-            margin-top: 15px;
-            border-left: 3px solid var(--gold);
+            margin-top: 8px;
         }
 
         .payment-methods {
             display: flex;
             gap: 15px;
-            margin: 20px 0;
+            margin: 10px 0;
         }
 
         .payment-method {
             flex: 1;
             text-align: center;
-            padding: 20px;
+            padding: 10px;
             border: 1px solid var(--taupe);
             border-radius: 5px;
             cursor: pointer;
@@ -1124,6 +1265,14 @@
             .hero h1 {
                 font-size: 48px;
             }
+            
+            .product-detail-container {
+                flex-direction: column;
+            }
+            
+            .product-main-image {
+                height: 300px;
+            }
         }
 
         @media (max-width: 992px) {
@@ -1194,14 +1343,17 @@
                 min-width: 280px;
                 padding: 30px 20px;
             }
-
-           
+            
+            .product-detail-actions {
+                flex-direction: column;
+            }
         }
 
         @media (max-width: 576px) {
-            .logo{
+            .logo {
                 font-size: 18px;
             }
+            
             .hero {
                 padding-top: 70px;
             }
@@ -1238,6 +1390,14 @@
 
             .quantity-control {
                 justify-content: center;
+            }
+            
+            .product-detail-title {
+                font-size: 22px;
+            }
+            
+            .product-detail-actions .btn {
+                width: 100%;
             }
         }
     </style>
@@ -1348,7 +1508,7 @@
             <div class="testimonials-container" id="testimonials-container">
                 <!-- Testimonial 1 -->
                 <div class="testimonial-card">
-                    <p class="testimonial-text">The quality of craftsmanship is exceptional. I've purchased several pieces from Haklim Fashions and each one has exceeded my expectations.</p>
+                    <p class="testimonial-text">The quality of craftsmanship is exceptional. I've purchased several pieces from Boutique Elegance and each one has exceeded my expectations.</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">
                             <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah Johnson">
@@ -1533,10 +1693,20 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 Haklim Fashions Inc. All rights reserved.</p>
+                <p>&copy; 2023 Haklim Fashions Inc. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Product Detail Modal -->
+    <div id="product-detail-modal" class="modal product-detail-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="product-detail-container" id="product-detail-container">
+                <!-- Content will be populated dynamically -->
+            </div>
+        </div>
+    </div>
 
     <!-- Cart Modal -->
     <div id="cart-modal" class="modal">
@@ -1581,8 +1751,7 @@
                     <label for="phone">Phone Number</label>
                     <input type="tel" id="phone" required>
                 </div>
-                
-                <h3>Delivery Information</h3>
+ 
                 <div class="form-group">
                     <label for="delivery-method">Delivery Method</label>
                     <select id="delivery-method" required>
@@ -1700,6 +1869,8 @@
         const cartModal = document.getElementById('cart-modal');
         const checkoutModal = document.getElementById('checkout-modal');
         const paymentModal = document.getElementById('payment-modal');
+        const productDetailModal = document.getElementById('product-detail-modal');
+        const productDetailContainer = document.getElementById('product-detail-container');
         const cartItemsContainer = document.getElementById('cart-items');
         const cartBadge = document.getElementById('cart-badge');
         const mobileCartBadge = document.getElementById('mobile-cart-badge');
@@ -1758,7 +1929,7 @@
             initTestimonialScroll();
         });
 
-        // Fetch products from the server
+         // Fetch products from the server
         function fetchProducts() {
             fetch('/fetch/get-products')
                 .then(response => {
@@ -1797,26 +1968,103 @@
             const endIndex = startIndex + productsPerPage;
             const paginatedProducts = products.slice(startIndex, endIndex);
             
-            productsGrid.innerHTML = paginatedProducts.map(product => `
-                <div class="product-card" data-id="${product.id}">
-                    <div class="product-image">
-                        <img src="${product.image}" alt="${product.name}">
-                        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">${product.name}</h3>
-                        <div class="product-price">
-                            ${product.oldPrice ? `<span class="old-price">$${product.oldPrice}</span>` : ''}
-                            $${product.price}
+            productsGrid.innerHTML = paginatedProducts.map(product => {
+                const discountPercentage = product.discount ? Math.round((product.discount / product.price) * 100) : 0;
+                
+                return `
+                    <div class="product-card" data-id="${product.id}">
+                        <div class="product-image">
+                            <img src="${product.images[0]}" alt="${product.name}">
+                            ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                            ${product.discount ? `<span class="discount-badge">-${discountPercentage}%</span>` : ''}
                         </div>
-                        <a href="#" class="add-to-cart">Add to Cart</a>
+                        <div class="product-info">
+                            <h3 class="product-title">${product.name}</h3>
+                            <div class="product-price">
+                                ${product.discount ? `<span class="old-price">$${product.price.toLocaleString()}</span>` : ''}
+                                $${product.discount ? product.discounted_price.toLocaleString() : product.price.toLocaleString()}
+                            </div>
+                            <button href="#" class="add-to-cart" onclick=addToCart("${product.id}")>Add to Cart</button>
+                        </div>
                     </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
             
             // Update pagination buttons
             prevPageBtn.disabled = currentPage === 1;
             nextPageBtn.disabled = endIndex >= products.length;
+            
+            // Add click event to product images for detail modal
+            document.querySelectorAll('.product-image').forEach(image => {
+                image.addEventListener('click', (e) => {
+                    const productId = e.currentTarget.closest('.product-card').dataset.id;
+                    const product = products.find(p => p.id === productId);
+                    if (product) {
+                        showProductDetail(product);
+                    }
+                });
+            });
+        }
+
+        // Show product detail modal
+        function showProductDetail(product) {
+            const discountPercentage = product.discount ? Math.round((product.discount / product.price) * 100) : 0;
+            
+            productDetailContainer.innerHTML = `
+                <div class="product-detail-images">
+                    <img src="${product.images[0]}" alt="${product.name}" class="product-main-image">
+                    <div class="product-thumbnails">
+                        ${product.images.map((img, index) => `
+                            <img src="${img}" alt="Thumbnail ${index + 1}" class="product-thumbnail ${index === 0 ? 'active' : ''}">
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="product-detail-info">
+                    <h2 class="product-detail-title">${product.name}</h2>
+                    <div class="product-detail-meta">
+                        <span>Brand: ${product.brand}</span>
+                        <span>Category: ${product.category}</span>
+                    </div>
+                    <div class="product-detail-price">
+                        ${product.discount ? `<span class="old-price">$${product.price.toLocaleString()}</span>` : ''}
+                        $${product.discount ? product.discounted_price.toLocaleString() : product.price.toLocaleString()}
+                        ${product.discount ? `<span class="product-detail-discount">${discountPercentage}% OFF</span>` : ''}
+                    </div>
+                    <div class="product-detail-stock">${product.stock > 0 ? 'In Stock' : 'Out of Stock'}</div>
+                    <div class="product-detail-description">
+                        <h4>Description</h4>
+                        <p>${product.description}</p>
+                    </div>
+                    <div class="product-detail-features">
+                        <h4>Key Features</h4>
+                        <ul>
+                            ${product.features.map(feature => `<li>${feature}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="product-detail-actions">
+                        <button class="btn" id="add-to-cart-detail">Add to Cart</button>
+                        <button class="btn btn-outline">Wishlist</button>
+                    </div>
+                </div>
+            `;
+            
+            // Set product ID on the add to cart button
+            const addToCartBtn = document.getElementById('add-to-cart-detail');
+            addToCartBtn.dataset.id = product.id;
+            
+            // Add click event to thumbnails
+            document.querySelectorAll('.product-thumbnail').forEach(thumb => {
+                thumb.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const mainImage = document.querySelector('.product-main-image');
+                    mainImage.src = e.currentTarget.src;
+                    
+                    document.querySelectorAll('.product-thumbnail').forEach(t => t.classList.remove('active'));
+                    e.currentTarget.classList.add('active');
+                });
+            });
+            
+            toggleModal(productDetailModal);
         }
 
         // Setup pagination
@@ -1997,10 +2245,17 @@
 
             // Add to cart functionality
             document.addEventListener('click', (e) => {
-                if (e.target.classList.contains('add-to-cart')) {
+                if (e.target.classList.contains('add-to-cart') || e.target.id === 'add-to-cart-detail') {
                     e.preventDefault();
-                    const productId = parseInt(e.target.closest('.product-card').dataset.id);
+                    const productId = e.target.classList.contains('add-to-cart') 
+                        ? parseInt(e.target.closest('.product-card').dataset.id)
+                        : e.target.dataset.id;
                     addToCart(productId);
+                    
+                    // If adding from detail modal, close it
+                    if (e.target.id === 'add-to-cart-detail') {
+                        toggleModal(productDetailModal);
+                    }
                 }
             });
 
@@ -2101,10 +2356,10 @@
             } else {
                 cartItemsContainer.innerHTML = cart.map(item => `
                     <div class="cart-item">
-                        <img src="${item.image}" alt="${item.name}">
+                        <img src="${item.images[0]}" alt="${item.name}">
                         <div class="cart-item-info">
                             <h4>${item.name}</h4>
-                            <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+                            <div class="cart-item-price">$${(item.discount ? item.discounted_price : item.price * item.quantity).toLocaleString()}</div>
                             <div class="quantity-control">
                                 <button class="quantity-btn minus" data-id="${item.id}">-</button>
                                 <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${item.id}">
@@ -2120,7 +2375,7 @@
                 // Add quantity control functionality
                 document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
                     btn.addEventListener('click', (e) => {
-                        const productId = parseInt(e.target.dataset.id);
+                        const productId = e.target.dataset.id;
                         const item = cart.find(item => item.id === productId);
                         if (item.quantity > 1) {
                             item.quantity--;
@@ -2133,7 +2388,7 @@
                 
                 document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
                     btn.addEventListener('click', (e) => {
-                        const productId = parseInt(e.target.dataset.id);
+                        const productId = e.target.dataset.id;
                         const item = cart.find(item => item.id === productId);
                         item.quantity++;
                         saveCart();
@@ -2144,7 +2399,7 @@
                 
                 document.querySelectorAll('.quantity-input').forEach(input => {
                     input.addEventListener('change', (e) => {
-                        const productId = parseInt(e.target.dataset.id);
+                        const productId = e.target.dataset.id;
                         const item = cart.find(item => item.id === productId);
                         const newQuantity = parseInt(e.target.value) || 1;
                         item.quantity = newQuantity < 1 ? 1 : newQuantity;
@@ -2158,28 +2413,28 @@
             // Add remove item functionality
             document.querySelectorAll('.cart-item-remove').forEach(btn => {
                 btn.addEventListener('click', (e) => {
-                    const productId = parseInt(e.target.dataset.id);
+                    const productId = e.target.dataset.id;
                     removeFromCart(productId);
                 });
             });
 
             // Update totals
-            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const subtotal = cart.reduce((total, item) => total + ((item.discount ? item.discounted_price : item.price) * item.quantity), 0);
             const shipping = subtotal > 0 ? 15 : 0; // Flat $15 shipping
             const total = subtotal + shipping;
 
-            document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
+            document.getElementById('cart-total').textContent = `$${total.toLocaleString()}`;
         }
 
         // Update checkout summary
         function updateCheckoutSummary() {
-            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const subtotal = cart.reduce((total, item) => total + ((item.discount ? item.discounted_price : item.price) * item.quantity), 0);
             const shipping = subtotal > 0 ? 15 : 0; // Flat $15 shipping
             const total = subtotal + shipping;
 
-            document.getElementById('checkout-subtotal').textContent = `$${subtotal.toFixed(2)}`;
-            document.getElementById('checkout-shipping').textContent = `$${shipping.toFixed(2)}`;
-            document.getElementById('checkout-total').textContent = `$${total.toFixed(2)}`;
+            document.getElementById('checkout-subtotal').textContent = `$${subtotal.toLocaleString()}`;
+            document.getElementById('checkout-shipping').textContent = `$${shipping.toLocaleString()}`;
+            document.getElementById('checkout-total').textContent = `$${total.toLocaleString()}`;
         }
 
         // Remove item from cart
