@@ -5,6 +5,8 @@ const productRoutes = require('./routes/product-routes');
 const PORT = 4000;
 
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 // Endpoint to get products
 app.use('/fetch', productRoutes);
