@@ -1,7 +1,7 @@
 const formidable = require('formidable');
 const cloudinary = require('cloudinary').v2;
 const db = require('../models/db');
-const fs = require('fs');
+//const fs = require('fs');
 
 
 // Sample products data
