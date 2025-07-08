@@ -233,6 +233,15 @@
             background-color: #c9c0b7;
         }
 
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #bb2d3b;
+        }
+
         /* Stats Cards */
         .stats-grid {
             display: grid;
@@ -246,6 +255,8 @@
             padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
         }
 
         .stat-card h3 {
@@ -269,18 +280,27 @@
             color: #F44336;
         }
 
+        .stat-card .icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            font-size: 2rem;
+            opacity: 0.2;
+        }
+
         /* Tables */
         .table-container {
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            overflow: scroll;
+            overflow: auto;
             margin-bottom: 2rem;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
+            min-width: 600px;
         }
 
         th, td {
@@ -359,8 +379,8 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             margin-bottom: 2rem;
-            height: 350px; /* Fixed height */
-            position: relative; /* Needed for Chart.js responsiveness */
+            height: 350px;
+            position: relative;
         }
 
         .chart-container h3 {
@@ -394,7 +414,7 @@
             background-color: white;
         }
 
-        /* Product Form */
+        /* Form Styles */
         .form-container {
             background-color: white;
             padding: 1.5rem;
@@ -434,16 +454,126 @@
             flex: 1;
         }
 
-        .image-upload {
+        /* Media Upload */
+        .media-upload {
             border: 2px dashed #ddd;
             padding: 2rem;
             text-align: center;
             border-radius: 4px;
             cursor: pointer;
+            margin-bottom: 1rem;
         }
 
-        .image-upload:hover {
+        .media-upload:hover {
             border-color: var(--gold);
+        }
+
+        .media-preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .media-preview {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .media-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .media-preview video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .media-preview .remove-media {
+            position: absolute;
+            top: 0.2rem;
+            right: 0.2rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        /* Features List */
+        .features-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-tag {
+            background-color: var(--cream);
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-tag .remove-feature {
+            margin-left: 0.3rem;
+            color: var(--taupe);
+            cursor: pointer;
+        }
+
+        /* Variants Section */
+        .variants-section {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+
+        .variants-section h4 {
+            margin-bottom: 1rem;
+        }
+
+        .variant-option {
+            margin-bottom: 1rem;
+        }
+
+        .variant-values {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .variant-value-tag {
+            background-color: var(--cream);
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .variant-value-tag .remove-value {
+            margin-left: 0.3rem;
+            color: var(--taupe);
+            cursor: pointer;
+        }
+
+        .add-variant-btn {
+            margin-top: 0.5rem;
         }
 
         /* Modals */
@@ -517,6 +647,122 @@
             display: flex;
             justify-content: flex-end;
             gap: 1rem;
+        }
+
+        /* Product View Modal */
+        .product-view-modal .modal-content {
+            max-width: 900px;
+        }
+
+        .product-view-container {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .product-view-images {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .product-view-main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .product-view-thumbnails {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+        }
+
+        .product-view-thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .product-view-thumbnail.active {
+            border-color: var(--gold);
+        }
+
+        .product-view-details {
+            flex: 1;
+        }
+
+        .product-view-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-view-price {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-view-original-price {
+            text-decoration: line-through;
+            color: var(--taupe);
+            margin-right: 0.5rem;
+        }
+
+        .product-view-discount {
+            color: #dc3545;
+            font-weight: 500;
+        }
+
+        .product-view-badge {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--soft-black);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .product-view-meta {
+            margin-bottom: 1.5rem;
+        }
+
+        .product-view-meta p {
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .product-view-meta strong {
+            color: var(--soft-black);
+        }
+
+        .product-view-features {
+            margin-bottom: 1.5rem;
+        }
+
+        .product-view-features h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .product-view-features ul {
+            padding-left: 1.5rem;
+        }
+
+        .product-view-features li {
+            margin-bottom: 0.3rem;
+        }
+
+        .product-view-description {
+            margin-bottom: 1.5rem;
+        }
+
+        .product-view-description h4 {
+            margin-bottom: 0.5rem;
         }
 
         /* Toast Notifications */
@@ -651,6 +897,81 @@
             font-weight: 500;
         }
 
+        /* Settings Section */
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .settings-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .settings-card h3 {
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .settings-option {
+            margin-bottom: 1rem;
+        }
+
+        .settings-option label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: var(--gold);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
         /* Responsive */
         @media (max-width: 992px) {
             .sidebar {
@@ -668,6 +989,14 @@
             .hamburger {
                 display: block;
             }
+
+            .product-view-container {
+                flex-direction: column;
+            }
+
+            .product-view-images {
+                min-width: auto;
+            }
         }
 
         @media (max-width: 768px) {
@@ -682,6 +1011,10 @@
             .form-row {
                 flex-direction: column;
                 gap: 0;
+            }
+
+            .settings-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -711,6 +1044,15 @@
             .modal-content {
                 width: 95%;
             }
+
+            .modal-footer {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .modal-footer .btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -738,10 +1080,6 @@
                 <a href="#" class="menu-item" data-section="analytics">
                     <i class="fas fa-chart-line"></i>
                     <span>Analytics</span>
-                </a>
-                <a href="#" class="menu-item" data-section="customers">
-                    <i class="fas fa-users"></i>
-                    <span>Customers</span>
                 </a>
                 <a href="#" class="menu-item" data-section="settings">
                     <i class="fas fa-cog"></i>
@@ -774,66 +1112,96 @@
             <!-- Dashboard Section -->
             <div class="content-section active" id="dashboard">
                 <div class="page-title">
-                    <h1>Dashboard</h1>
+                    <h1>Dashboard Overview</h1>
                     <button class="btn">Generate Report</button>
                 </div>
 
                 <!-- Stats Cards -->
                 <div class="stats-grid">
                     <div class="stat-card">
+                        <i class="fas fa-dollar-sign icon"></i>
                         <h3>Total Revenue</h3>
                         <div class="value">$24,780</div>
                         <div class="change">+12.5% from last month</div>
                     </div>
                     <div class="stat-card">
+                        <i class="fas fa-shopping-cart icon"></i>
                         <h3>New Orders</h3>
                         <div class="value">156</div>
                         <div class="change">+8.3% from last month</div>
                     </div>
                     <div class="stat-card">
+                        <i class="fas fa-box-open icon"></i>
                         <h3>Products Sold</h3>
                         <div class="value">423</div>
                         <div class="change">+5.2% from last month</div>
                     </div>
                     <div class="stat-card">
-                        <h3>Site Visits</h3>
-                        <div class="value">8,742</div>
-                        <div class="change">+15.7% from last month</div>
+                        <i class="fas fa-users icon"></i>
+                        <h3>New Customers</h3>
+                        <div class="value">48</div>
+                        <div class="change">+22.7% from last month</div>
                     </div>
                 </div>
 
                 <!-- Charts Row -->
                 <div class="form-row">
-                    <div class="chart-container" >
-                        <h3>Sales Overview</h3>
+                    <div class="chart-container">
+                        <h3>Sales Performance</h3>
                         <canvas id="salesChart"></canvas>
                     </div>
-                    <div class="chart-container" >
-                        <h3>Revenue Sources</h3>
-                        <canvas id="revenueChart" style="width: 300; height: 270px;"></canvas>
+                    <div class="chart-container">
+                        <h3>Top Categories</h3>
+                        <canvas id="revenueChart"></canvas>
                     </div>
                 </div>
 
-                <!-- Recent Orders Table -->
+                <!-- Recent Activity -->
                 <div class="page-title">
-                    <h1>Recent Orders</h1>
-                    <button class="btn">View All Orders</button>
+                    <h1>Recent Activity</h1>
                 </div>
 
                 <div class="table-container">
                     <table>
                         <thead>
                             <tr>
-                                <th>Order ID</th>
-                                <th>Customer</th>
-                                <th>Date</th>
-                                <th>Amount</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                                <th>Time</th>
                                 <th>Status</th>
-                                <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody id="recentOrdersBody">
-                            <!-- Will be populated by JavaScript -->
+                        <tbody>
+                            <tr>
+                                <td><i class="fas fa-shopping-cart"></i> Order</td>
+                                <td>New order #ORD-2023-007 from Emily Chen</td>
+                                <td>2 minutes ago</td>
+                                <td><span class="status pending">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-box"></i> Inventory</td>
+                                <td>Low stock alert for "Cashmere Crewneck"</td>
+                                <td>1 hour ago</td>
+                                <td><span class="status processing">Needs Attention</span></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-truck"></i> Shipping</td>
+                                <td>Order #ORD-2023-005 shipped to Jessica Williams</td>
+                                <td>3 hours ago</td>
+                                <td><span class="status shipped">In Transit</span></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-dollar-sign"></i> Payment</td>
+                                <td>Payment received for order #ORD-2023-004</td>
+                                <td>5 hours ago</td>
+                                <td><span class="status completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-user"></i> Customer</td>
+                                <td>New customer registration: Robert Taylor</td>
+                                <td>Yesterday</td>
+                                <td><span class="status active">Active</span></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -842,7 +1210,7 @@
             <!-- Products Section -->
             <div class="content-section" id="products">
                 <div class="page-title">
-                    <h1>Products</h1>
+                    <h1>Product Management</h1>
                     <button class="btn" id="addProductBtn">Add Product</button>
                 </div>
 
@@ -895,7 +1263,7 @@
             <!-- Orders Section -->
             <div class="content-section" id="orders">
                 <div class="page-title">
-                    <h1>Orders</h1>
+                    <h1>Order Management</h1>
                     <button class="btn">Export Orders</button>
                 </div>
 
@@ -907,7 +1275,7 @@
                             <option value="all">All</option>
                             <option value="pending">Pending</option>
                             <option value="processing">Processing</option>
-                            <option value="shipped">Shipped</option>
+                            <option value="shipped">Shipped</div>
                             <option value="completed">Completed</option>
                             <option value="cancelled">Cancelled</option>
                         </select>
@@ -951,7 +1319,7 @@
             <!-- Analytics Section -->
             <div class="content-section" id="analytics">
                 <div class="page-title">
-                    <h1>Analytics</h1>
+                    <h1>Business Analytics</h1>
                     <div>
                         <button class="btn">Export Data</button>
                         <button class="btn btn-secondary">Refresh</button>
@@ -999,21 +1367,159 @@
                 </div>
             </div>
 
-            <!-- Customers Section -->
-            <div class="content-section" id="customers">
-                <div class="page-title">
-                    <h1>Customers</h1>
-                    <button class="btn">Export Customer Data</button>
-                </div>
-                <p>Will be completed soon</p>
-            </div>
-
             <!-- Settings Section -->
             <div class="content-section" id="settings">
                 <div class="page-title">
-                    <h1>Settings</h1>
+                    <h1>System Settings</h1>
                 </div>
-                <p>Will be completed soon</p>
+
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3>Store Settings</h3>
+                        <div class="settings-option">
+                            <label>Store Status</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <p class="help-text">Toggle to open/close your store</p>
+                        </div>
+                        <div class="settings-option">
+                            <label for="storeMessage">Store Message</label>
+                            <textarea id="storeMessage" rows="3" placeholder="Display a message when store is closed"></textarea>
+                        </div>
+                        <div class="settings-option">
+                            <label for="currency">Currency</label>
+                            <select id="currency">
+                                <option value="USD">US Dollar ($)</option>
+                                <option value="EUR">Euro (€)</option>
+                                <option value="GBP">British Pound (£)</option>
+                            </select>
+                        </div>
+                        <button class="btn" style="margin-top: 1rem;">Save Store Settings</button>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Security</h3>
+                        <div class="settings-option">
+                            <label>Change Password</label>
+                            <button class="btn" id="changePasswordBtn">Change Password</button>
+                        </div>
+                        <div class="settings-option">
+                            <label>Two-Factor Authentication</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-option">
+                            <label>Login Notifications</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Payment Methods</h3>
+                        <div class="settings-option">
+                            <label>Credit/Debit Cards</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-option">
+                            <label>PayPal</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-option">
+                            <label>Bank Transfer</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-option">
+                            <label>Cash on Delivery</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <button class="btn" style="margin-top: 1rem;">Save Payment Settings</button>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Shipping Options</h3>
+                        <div class="settings-option">
+                            <label>Standard Shipping</label>
+                            <input type="number" placeholder="Price" value="5.99">
+                        </div>
+                        <div class="settings-option">
+                            <label>Express Shipping</label>
+                            <input type="number" placeholder="Price" value="12.99">
+                        </div>
+                        <div class="settings-option">
+                            <label>Free Shipping Threshold</label>
+                            <input type="number" placeholder="Order amount" value="100">
+                        </div>
+                        <button class="btn" style="margin-top: 1rem;">Save Shipping Settings</button>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Tax Settings</h3>
+                        <div class="settings-option">
+                            <label>Tax Rate (%)</label>
+                            <input type="number" placeholder="Tax rate" value="8.5">
+                        </div>
+                        <div class="settings-option">
+                            <label>Tax Inclusive Pricing</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <button class="btn" style="margin-top: 1rem;">Save Tax Settings</button>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Notifications</h3>
+                        <div class="settings-option">
+                            <label>Email Notifications</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-option">
+                            <label>SMS Notifications</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-option">
+                            <label>New Order Alerts</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-option">
+                            <label>Low Stock Alerts</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <button class="btn" style="margin-top: 1rem;">Save Notification Settings</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1027,6 +1533,37 @@
             </div>
             <div class="modal-body">
                 <form id="productForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productCategory">Category</label>
+                            <select id="productCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="clothing">Clothing</option>
+                                <option value="shoes">Shoes</option>
+                                <option value="accessories">Accessories</option>
+                                <option value="jewelry">Jewelry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="productSubcategory">Subcategory</label>
+                            <select id="productSubcategory" required disabled>
+                                <option value="">Select Subcategory</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="productClass">Class</label>
+                        <select id="productClass" required disabled>
+                            <option value="">Select Class</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="productBrand">Brand</label>
+                        <select id="productBrand" required disabled>
+                            <option value="">Select Brand</option>
+                        </select>
+                        <input type="text" id="otherBrandInput" placeholder="Enter brand name" style="margin-top: 0.5rem; display: none;">
+                    </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="productName">Product Name</label>
@@ -1043,27 +1580,42 @@
                             <input type="number" id="productPrice" min="0" step="0.01" required>
                         </div>
                         <div class="form-group">
-                            <label for="productStock">Stock Quantity</label>
-                            <input type="number" id="productStock" min="0" required>
+                            <label for="productDiscount">Discount (%)</label>
+                            <input type="number" id="productDiscount" min="0" max="100" value="0">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="productCategorySelect">Category</label>
-                            <select id="productCategorySelect" required>
-                                <option value="clothing">Clothing</option>
-                                <option value="shoes">Shoes</option>
-                                <option value="accessories">Accessories</option>
-                                <option value="jewelry">Jewelry</option>
-                            </select>
+                            <label for="productStock">Stock Quantity</label>
+                            <input type="number" id="productStock" min="0" required>
                         </div>
                         <div class="form-group">
-                            <label for="productStatusSelect">Status</label>
-                            <select id="productStatusSelect" required>
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-                                <option value="outofstock">Out of Stock</option>
+                            <label for="productBadge">Badge</label>
+                            <select id="productBadge">
+                                <option value="">None</option>
+                                <option value="new">New Arrival</option>
+                                <option value="sale">Sale</option>
+                                <option value="bestseller">Best Seller</option>
+                                <option value="limited">Limited Edition</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="productStatusSelect">Status</label>
+                        <select id="productStatusSelect" required>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Features</label>
+                        <div class="features-list" id="featuresList">
+                            <!-- Features will be added here -->
+                        </div>
+                        <input type="hidden" id="productFeatures">
+                        <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                            <input type="text" class="form-control" id="featureInput" placeholder="Enter feature">
+                            <button type="button" class="btn btn-secondary" id="addFeatureBtn">Add</button>
                         </div>
                     </div>
                     <div class="form-group">
@@ -1071,11 +1623,58 @@
                         <textarea id="productDescription" rows="4"></textarea>
                     </div>
                     <div class="form-group">
-                        <label>Product Images</label>
-                        <div class="image-upload">
+                        <label>Product Images (Max 5)</label>
+                        <div class="media-upload" id="imageUploadArea">
                             <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; margin-bottom: 1rem; color: var(--taupe);"></i>
                             <p>Drag & drop images here or click to browse</p>
-                            <input type="file" id="productImages" multiple style="display: none;">
+                            <input type="file" id="productImages" multiple accept="image/*" style="display: none;">
+                        </div>
+                        <div class="media-preview-container" id="imagesPreviewContainer">
+                            <!-- Image previews will be shown here -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Video (Optional)</label>
+                        <div class="media-upload" id="videoUploadArea">
+                            <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; margin-bottom: 1rem; color: var(--taupe);"></i>
+                            <p>Drag & drop video here or click to browse</p>
+                            <input type="file" id="productVideo" accept="video/*" style="display: none;">
+                        </div>
+                        <div class="media-preview-container" id="videoPreviewContainer">
+                            <!-- Video preview will be shown here -->
+                        </div>
+                    </div>
+                    <div class="variants-section">
+                        <h4>Product Variants</h4>
+                        <div class="form-group">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="hasVariantsToggle">
+                                <span class="toggle-slider"></span>
+                                <span style="margin-left: 0.5rem;">This product has variants (color, size, etc.)</span>
+                            </label>
+                        </div>
+                        <div id="variantsContainer" style="display: none;">
+                            <div class="variant-option">
+                                <label>Colors</label>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <input type="text" id="colorInput" placeholder="Add color (e.g. Red)">
+                                    <button type="button" class="btn btn-secondary" id="addColorBtn">Add</button>
+                                </div>
+                                <div class="variant-values" id="colorValues">
+                                    <!-- Color values will be added here -->
+                                </div>
+                            </div>
+                            <div class="variant-option">
+                                <label>Sizes</label>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <input type="text" id="sizeInput" placeholder="Add size (e.g. M)">
+                                    <button type="button" class="btn btn-secondary" id="addSizeBtn">Add</button>
+                                </div>
+                                <div class="variant-values" id="sizeValues">
+                                    <!-- Size values will be added here -->
+                                </div>
+                            </div>
+                            <input type="hidden" id="productVariants">
                         </div>
                     </div>
                 </form>
@@ -1083,6 +1682,25 @@
             <div class="modal-footer">
                 <button class="btn btn-secondary modal-close">Cancel</button>
                 <button class="btn" id="saveProductBtn">Save Product</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product View Modal -->
+    <div class="modal product-view-modal" id="productViewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Product Details</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-view-container" id="productViewContainer">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close">Close</button>
+                <button class="btn" id="editProductBtn">Edit Product</button>
             </div>
         </div>
     </div>
@@ -1191,91 +1809,215 @@
         </div>
     </div>
 
+    <!-- Change Password Modal -->
+    <div class="modal" id="changePasswordModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Change Password</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="changePasswordForm">
+                    <div class="form-group">
+                        <label for="currentPassword">Current Password</label>
+                        <input type="password" id="currentPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">New Password</label>
+                        <input type="password" id="newPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm New Password</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close">Cancel</button>
+                <button class="btn" id="savePasswordBtn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Toast Notifications Container -->
     <div class="toast-container" id="toastContainer"></div>
 
     <script>
-        // Sample Data
-        const productsData = [
+        // Sample Data with enhanced structure
+        let productsData = [
             {
                 id: 1,
                 name: "The Milano Handbag",
-                sku: "PROD-001",
                 category: "accessories",
+                subcategory: "handbags",
+                class: "luxury",
+                brand: "Haklim",
+                sku: "PROD-001",
                 price: 395.00,
+                discount: 0,
                 stock: 24,
                 status: "active",
-                description: "Luxury leather handbag with gold accents."
+                features: [
+                    "Luxury leather construction",
+                    "Gold-tone hardware",
+                    "Adjustable strap",
+                    "Inner zip pocket"
+                ],
+                description: "Luxury leather handbag with gold accents. Perfect for both casual and formal occasions.",
+                images: [
+                    "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1286&q=80"
+                ],
+                video: null,
+                variants: {
+                    colors: ["Black", "Brown", "Camel"],
+                    sizes: []
+                },
+                badge: "bestseller"
             },
             {
                 id: 2,
                 name: "Florentine Silk Scarf",
-                sku: "PROD-002",
                 category: "accessories",
+                subcategory: "scarves",
+                class: "premium",
+                brand: "Haklim",
+                sku: "PROD-002",
                 price: 185.00,
+                discount: 10,
                 stock: 42,
                 status: "active",
-                description: "Handmade silk scarf with intricate patterns."
+                features: [
+                    "100% pure silk",
+                    "Hand-rolled edges",
+                    "Intricate floral pattern",
+                    "Lightweight and breathable"
+                ],
+                description: "Handmade silk scarf with intricate patterns. A timeless accessory that adds elegance to any outfit.",
+                images: [
+                    "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80"
+                ],
+                video: null,
+                variants: {
+                    colors: ["Blue", "Green", "Red"],
+                    sizes: []
+                },
+                badge: null
             },
             {
                 id: 3,
                 name: "Venezia Leather Wallet",
-                sku: "PROD-003",
                 category: "accessories",
+                subcategory: "wallets",
+                class: "classic",
+                brand: "Haklim",
+                sku: "PROD-003",
                 price: 275.00,
+                discount: 0,
                 stock: 0,
                 status: "outofstock",
-                description: "Genuine leather wallet with multiple compartments."
+                features: [
+                    "Genuine Italian leather",
+                    "Multiple card slots",
+                    "ID window",
+                    "Coin pocket"
+                ],
+                description: "Genuine leather wallet with multiple compartments. Crafted with precision for durability and style.",
+                images: [
+                    "https://images.unsplash.com/photo-1548032885-b5e38734688a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80"
+                ],
+                video: null,
+                variants: {
+                    colors: ["Black", "Brown"],
+                    sizes: []
+                },
+                badge: null
             },
             {
                 id: 4,
                 name: "Cashmere Crewneck",
-                sku: "PROD-004",
                 category: "clothing",
+                subcategory: "sweaters",
+                class: "luxury",
+                brand: "Haklim",
+                sku: "PROD-004",
                 price: 320.00,
+                discount: 15,
                 stock: 15,
                 status: "active",
-                description: "100% cashmere crewneck sweater in various colors."
+                features: [
+                    "100% cashmere",
+                    "Ribbed cuffs and hem",
+                    "Classic crewneck design",
+                    "Available in multiple colors"
+                ],
+                description: "100% cashmere crewneck sweater in various colors. Ultra-soft and warm for premium comfort.",
+                images: [
+                    "https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80"
+                ],
+                video: null,
+                variants: {
+                    colors: ["Navy", "Charcoal", "Camel"],
+                    sizes: ["S", "M", "L", "XL"]
+                },
+                badge: "sale"
             },
             {
                 id: 5,
                 name: "Oxford Dress Shoes",
-                sku: "PROD-005",
                 category: "shoes",
+                subcategory: "dress",
+                class: "premium",
+                brand: "Haklim",
+                sku: "PROD-005",
                 price: 450.00,
+                discount: 0,
                 stock: 8,
                 status: "active",
-                description: "Classic oxford shoes in premium leather."
+                features: [
+                    "Premium leather upper",
+                    "Goodyear welt construction",
+                    "Leather sole",
+                    "Cushioned insole"
+                ],
+                description: "Classic oxford shoes in premium leather. Handcrafted for durability and timeless style.",
+                images: [
+                    "https://images.unsplash.com/photo-1463100099107-aa0980c362e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80"
+                ],
+                video: null,
+                variants: {
+                    colors: ["Black", "Brown"],
+                    sizes: ["7", "8", "9", "10", "11", "12"]
+                },
+                badge: null
             },
             {
                 id: 6,
                 name: "Diamond Pendant",
-                sku: "PROD-006",
                 category: "jewelry",
+                subcategory: "necklaces",
+                class: "luxury",
+                brand: "Haklim",
+                sku: "PROD-006",
                 price: 1200.00,
+                discount: 20,
                 stock: 3,
                 status: "active",
-                description: "18K gold diamond pendant necklace."
-            },
-            {
-                id: 7,
-                name: "Silk Blouse",
-                sku: "PROD-007",
-                category: "clothing",
-                price: 280.00,
-                stock: 0,
-                status: "outofstock",
-                description: "Elegant silk blouse with button details."
-            },
-            {
-                id: 8,
-                name: "Leather Belt",
-                sku: "PROD-008",
-                category: "accessories",
-                price: 150.00,
-                stock: 32,
-                status: "active",
-                description: "Genuine leather belt with metal buckle."
+                features: [
+                    "18K gold setting",
+                    "0.5 carat diamond",
+                    "18\" chain included",
+                    "Gift box packaging"
+                ],
+                description: "18K gold diamond pendant necklace. A stunning piece that adds elegance to any look.",
+                images: [
+                    "https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80"
+                ],
+                video: null,
+                variants: {
+                    colors: ["White Gold", "Yellow Gold"],
+                    sizes: []
+                },
+                badge: "limited"
             }
         ];
 
@@ -1396,6 +2138,127 @@
             }
         ];
 
+        // Category structure
+        const categories = {
+            clothing: {
+                name: "Clothing",
+                subcategories: {
+                    dresses: {
+                        name: "Dresses",
+                        classes: ["casual", "cocktail", "evening", "bridal"]
+                    },
+                    tops: {
+                        name: "Tops",
+                        classes: ["basic", "blouse", "shirt", "knit"]
+                    },
+                    sweaters: {
+                        name: "Sweaters",
+                        classes: ["cashmere", "wool", "cotton", "luxury"]
+                    },
+                    outerwear: {
+                        name: "Outerwear",
+                        classes: ["jackets", "coats", "blazers", "trench"]
+                    },
+                    pants: {
+                        name: "Pants",
+                        classes: ["jeans", "trousers", "leggings", "formal"]
+                    }
+                },
+                brands: {
+                    haklim: "Haklim",
+                    versace: "Versace",
+                    gucci: "Gucci",
+                    prada: "Prada",
+                    other: "Other"
+                }
+            },
+            shoes: {
+                name: "Shoes",
+                subcategories: {
+                    sneakers: {
+                        name: "Sneakers",
+                        classes: ["casual", "athletic", "luxury", "designer"]
+                    },
+                    boots: {
+                        name: "Boots",
+                        classes: ["ankle", "knee-high", "riding", "combat"]
+                    },
+                    sandals: {
+                        name: "Sandals",
+                        classes: ["flat", "heeled", "wedge", "gladiator"]
+                    },
+                    dress: {
+                        name: "Dress Shoes",
+                        classes: ["oxford", "loafer", "pump", "slingback"]
+                    }
+                },
+                brands: {
+                    haklim: "Haklim",
+                    jimmy_choo: "Jimmy Choo",
+                    manolo: "Manolo Blahnik",
+                    christian: "Christian Louboutin",
+                    other: "Other"
+                }
+            },
+            accessories: {
+                name: "Accessories",
+                subcategories: {
+                    handbags: {
+                        name: "Handbags",
+                        classes: ["tote", "clutch", "crossbody", "luxury"]
+                    },
+                    wallets: {
+                        name: "Wallets",
+                        classes: ["bi-fold", "tri-fold", "cardholder", "travel"]
+                    },
+                    scarves: {
+                        name: "Scarves",
+                        classes: ["silk", "cashmere", "wool", "linen"]
+                    },
+                    hats: {
+                        name: "Hats",
+                        classes: ["fedora", "beanie", "sun", "beret"]
+                    }
+                },
+                brands: {
+                    haklim: "Haklim",
+                    louis: "Louis Vuitton",
+                    chanel: "Chanel",
+                    hermes: "Hermès",
+                    other: "Other"
+                }
+            },
+            jewelry: {
+                name: "Jewelry",
+                subcategories: {
+                    necklaces: {
+                        name: "Necklaces",
+                        classes: ["pendant", "choker", "chain", "statement"]
+                    },
+                    rings: {
+                        name: "Rings",
+                        classes: ["band", "solitaire", "cocktail", "stackable"]
+                    },
+                    bracelets: {
+                        name: "Bracelets",
+                        classes: ["bangle", "chain", "cuff", "charm"]
+                    },
+                    earrings: {
+                        name: "Earrings",
+                        classes: ["stud", "hoop", "drop", "huggie"]
+                    }
+                },
+                brands: {
+                    haklim: "Haklim",
+                    tiffany: "Tiffany & Co.",
+                    cartier: "Cartier",
+                    bulgari: "Bulgari",
+                    other: "Other"
+                }
+            }
+        };
+
+        // Sales data for charts
         const salesData = {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             clothing: [12000, 15000, 18000, 21000, 19000, 22000, 24000, 23000, 25000, 27000, 30000, 32000],
@@ -1430,17 +2293,51 @@
         const menuItems = document.querySelectorAll('.menu-item');
         const contentSections = document.querySelectorAll('.content-section');
         const productModal = document.getElementById('productModal');
+        const productViewModal = document.getElementById('productViewModal');
         const orderModal = document.getElementById('orderModal');
+        const changePasswordModal = document.getElementById('changePasswordModal');
         const productModalTitle = document.getElementById('productModalTitle');
         const productForm = document.getElementById('productForm');
         const addProductBtn = document.getElementById('addProductBtn');
         const saveProductBtn = document.getElementById('saveProductBtn');
+        const editProductBtn = document.getElementById('editProductBtn');
+        const changePasswordBtn = document.getElementById('changePasswordBtn');
+        const savePasswordBtn = document.getElementById('savePasswordBtn');
+        const updateOrderBtn = document.getElementById('updateOrderBtn');
         const modalCloseButtons = document.querySelectorAll('.modal-close');
         const productsBody = document.getElementById('productsBody');
         const ordersBody = document.getElementById('ordersBody');
-        const recentOrdersBody = document.getElementById('recentOrdersBody');
+        const productViewContainer = document.getElementById('productViewContainer');
         const modalOrderItems = document.getElementById('modalOrderItems');
         const toastContainer = document.getElementById('toastContainer');
+        const hasVariantsToggle = document.getElementById('hasVariantsToggle');
+        const variantsContainer = document.getElementById('variantsContainer');
+
+        // Form elements
+        const productCategorySelect = document.getElementById('productCategory');
+        const productSubcategorySelect = document.getElementById('productSubcategory');
+        const productClassSelect = document.getElementById('productClass');
+        const productBrandSelect = document.getElementById('productBrand');
+        const otherBrandInput = document.getElementById('otherBrandInput');
+        const addFeatureBtn = document.getElementById('addFeatureBtn');
+        const featureInput = document.getElementById('featureInput');
+        const featuresList = document.getElementById('featuresList');
+        const addColorBtn = document.getElementById('addColorBtn');
+        const colorInput = document.getElementById('colorInput');
+        const colorValues = document.getElementById('colorValues');
+        const addSizeBtn = document.getElementById('addSizeBtn');
+        const sizeInput = document.getElementById('sizeInput');
+        const sizeValues = document.getElementById('sizeValues');
+        const imageUploadArea = document.getElementById('imageUploadArea');
+        const productImagesInput = document.getElementById('productImages');
+        const imagesPreviewContainer = document.getElementById('imagesPreviewContainer');
+        const videoUploadArea = document.getElementById('videoUploadArea');
+        const productVideoInput = document.getElementById('productVideo');
+        const videoPreviewContainer = document.getElementById('videoPreviewContainer');
+
+        // Current product being edited/viewed
+        let currentProductId = null;
+        let currentOrderId = null;
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
@@ -1449,7 +2346,6 @@
             
             // Populate orders tables
             renderOrdersTable();
-            renderRecentOrdersTable();
             
             // Initialize charts
             initCharts();
@@ -1497,16 +2393,82 @@
 
             // Add product button
             addProductBtn.addEventListener('click', function() {
+                currentProductId = null;
                 productModalTitle.textContent = 'Add New Product';
                 productForm.reset();
+                featuresList.innerHTML = '';
+                colorValues.innerHTML = '';
+                sizeValues.innerHTML = '';
+                imagesPreviewContainer.innerHTML = '';
+                videoPreviewContainer.innerHTML = '';
+                document.getElementById('productVariants').value = '';
+                document.getElementById('productFeatures').value = '';
+                variantsContainer.style.display = 'none';
+                hasVariantsToggle.checked = false;
+                
+                // Enable category select
+                productCategorySelect.disabled = false;
+                
                 showModal(productModal);
             });
 
             // Save product button
             saveProductBtn.addEventListener('click', function() {
-                // In a real app, you would save the product here
-                showToast('Product saved successfully!', 'success');
-                hideModal(productModal);
+                saveProduct();
+            });
+
+            // Edit product button in view modal
+            editProductBtn.addEventListener('click', function() {
+                if (currentProductId) {
+                    hideModal(productViewModal);
+                    editProduct(currentProductId);
+                }
+            });
+
+            // Change password button
+            document.getElementById('changePasswordBtn')?.addEventListener('click', function() {
+                showModal(changePasswordModal);
+            });
+
+            // Save password button
+            savePasswordBtn?.addEventListener('click', function() {
+                const currentPassword = document.getElementById('currentPassword').value;
+                const newPassword = document.getElementById('newPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                if (newPassword !== confirmPassword) {
+                    showToast('New passwords do not match', 'error');
+                    return;
+                }
+                
+                // In a real app, you would validate and save the new password here
+                showToast('Password changed successfully', 'success');
+                hideModal(changePasswordModal);
+                document.getElementById('changePasswordForm').reset();
+            });
+
+            // Update order status button
+            updateOrderBtn.addEventListener('click', function() {
+                if (currentOrderId) {
+                    const order = ordersData.find(o => o.id === currentOrderId);
+                    if (order) {
+                        // Progress the order status
+                        if (order.status === 'pending') {
+                            order.status = 'processing';
+                        } else if (order.status === 'processing') {
+                            order.status = 'shipped';
+                        } else if (order.status === 'shipped') {
+                            order.status = 'completed';
+                        }
+                        
+                        updateOrderProgress(order.status);
+                        document.getElementById('modalOrderStatus').textContent = capitalizeFirstLetter(order.status);
+                        document.getElementById('modalOrderStatus').className = `status ${order.status}`;
+                        
+                        showToast(`Order status updated to ${order.status}`, 'success');
+                        renderOrdersTable();
+                    }
+                }
             });
 
             // Modal close buttons
@@ -1548,6 +2510,163 @@
 
             document.getElementById('orderDate').addEventListener('change', function() {
                 renderOrdersTable();
+            });
+
+            // Category selection change
+            productCategorySelect.addEventListener('change', function() {
+                const category = this.value;
+                productSubcategorySelect.innerHTML = '<option value="">Select Subcategory</option>';
+                productClassSelect.innerHTML = '<option value="">Select Class</option>';
+                productBrandSelect.innerHTML = '<option value="">Select Brand</option>';
+                
+                if (category) {
+                    productSubcategorySelect.disabled = false;
+                    
+                    // Populate subcategories
+                    const subcategories = categories[category]?.subcategories;
+                    if (subcategories) {
+                        for (const [key, value] of Object.entries(subcategories)) {
+                            const option = document.createElement('option');
+                            option.value = key;
+                            option.textContent = value.name;
+                            productSubcategorySelect.appendChild(option);
+                        }
+                    }
+                } else {
+                    productSubcategorySelect.disabled = true;
+                    productClassSelect.disabled = true;
+                    productBrandSelect.disabled = true;
+                }
+            });
+
+            // Subcategory selection change
+            productSubcategorySelect.addEventListener('change', function() {
+                const category = productCategorySelect.value;
+                const subcategory = this.value;
+                productClassSelect.innerHTML = '<option value="">Select Class</option>';
+                productBrandSelect.innerHTML = '<option value="">Select Brand</option>';
+                
+                if (category && subcategory) {
+                    productClassSelect.disabled = false;
+                    
+                    // Populate classes
+                    const classes = categories[category]?.subcategories[subcategory]?.classes;
+                    if (classes) {
+                        classes.forEach(cls => {
+                            const option = document.createElement('option');
+                            option.value = cls;
+                            option.textContent = capitalizeFirstLetter(cls);
+                            productClassSelect.appendChild(option);
+                        });
+                    }
+                } else {
+                    productClassSelect.disabled = true;
+                    productBrandSelect.disabled = true;
+                }
+            });
+
+            // Class selection change
+            productClassSelect.addEventListener('change', function() {
+                const category = productCategorySelect.value;
+                productBrandSelect.innerHTML = '<option value="">Select Brand</option>';
+                
+                if (category && this.value) {
+                    productBrandSelect.disabled = false;
+                    
+                    // Populate brands
+                    const brands = categories[category]?.brands;
+                    if (brands) {
+                        for (const [key, value] of Object.entries(brands)) {
+                            const option = document.createElement('option');
+                            option.value = key;
+                            option.textContent = value;
+                            productBrandSelect.appendChild(option);
+                        }
+                    }
+                } else {
+                    productBrandSelect.disabled = true;
+                }
+            });
+
+            // Brand selection change
+            productBrandSelect.addEventListener('change', function() {
+                if (this.value === 'other') {
+                    otherBrandInput.style.display = 'block';
+                } else {
+                    otherBrandInput.style.display = 'none';
+                }
+            });
+
+            // Add feature button
+            addFeatureBtn.addEventListener('click', function() {
+                addFeature();
+            });
+
+            // Add color button
+            addColorBtn.addEventListener('click', function() {
+                addVariantValue('color');
+            });
+
+            // Add size button
+            addSizeBtn.addEventListener('click', function() {
+                addVariantValue('size');
+            });
+
+            // Has variants toggle
+            hasVariantsToggle.addEventListener('change', function() {
+                variantsContainer.style.display = this.checked ? 'block' : 'none';
+            });
+
+            // Image upload area click
+            imageUploadArea.addEventListener('click', function() {
+                productImagesInput.click();
+            });
+
+            // Image file input change
+            productImagesInput.addEventListener('change', function() {
+                handleImageUpload(this.files);
+            });
+
+            // Video upload area click
+            videoUploadArea.addEventListener('click', function() {
+                productVideoInput.click();
+            });
+
+            // Video file input change
+            productVideoInput.addEventListener('change', function() {
+                handleVideoUpload(this.files[0]);
+            });
+
+            // Allow drag and drop for images
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                imageUploadArea.addEventListener(eventName, preventDefaults, false);
+            });
+
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                imageUploadArea.addEventListener(eventName, highlight, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                imageUploadArea.addEventListener(eventName, unhighlight, false);
+            });
+
+            function highlight() {
+                imageUploadArea.classList.add('highlight');
+            }
+
+            function unhighlight() {
+                imageUploadArea.classList.remove('highlight');
+            }
+
+            imageUploadArea.addEventListener('drop', function(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                handleImageUpload(files);
             });
         }
 
@@ -1600,10 +2719,28 @@
                     statusText = 'Out of Stock';
                 }
                 
+                // Calculate discounted price if applicable
+                const discountedPrice = product.discount > 0 
+                    ? product.price * (1 - product.discount / 100)
+                    : null;
+                
                 row.innerHTML = `
-                    <td>${product.name}</td>
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <img src="${product.images[0]}" alt="${product.name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">
+                            <div>
+                                <div style="font-weight: 500;">${product.name}</div>
+                                ${product.badge ? `<span class="product-badge" style="background-color: var(--gold); color: var(--soft-black); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; display: inline-block; margin-top: 0.2rem;">${capitalizeFirstLetter(product.badge)}</span>` : ''}
+                            </div>
+                        </div>
+                    </td>
                     <td>${capitalizeFirstLetter(product.category)}</td>
-                    <td>$${product.price.toFixed(2)}</td>
+                    <td>
+                        ${discountedPrice 
+                            ? `<span style="text-decoration: line-through; color: var(--taupe);">$${product.price.toFixed(2)}</span><br>
+                               <span style="color: #dc3545; font-weight: 500;">$${discountedPrice.toFixed(2)}</span>` 
+                            : `$${product.price.toFixed(2)}`}
+                    </td>
                     <td>${product.stock}</td>
                     <td><span class="status ${statusClass}">${statusText}</span></td>
                     <td>
@@ -1727,60 +2864,75 @@
             });
         }
 
-        // Render recent orders table (for dashboard)
-        function renderRecentOrdersTable() {
-            // Clear table
-            recentOrdersBody.innerHTML = '';
-            
-            // Get the 5 most recent orders
-            const recentOrders = [...ordersData]
-                .sort((a, b) => new Date(b.date) - new Date(a.date))
-                .slice(0, 5);
-            
-            // Populate table
-            recentOrders.forEach(order => {
-                const row = document.createElement('tr');
-                
-                // Determine status class
-                let statusClass;
-                if (order.status === 'completed') {
-                    statusClass = 'completed';
-                } else if (order.status === 'shipped') {
-                    statusClass = 'shipped';
-                } else if (order.status === 'pending') {
-                    statusClass = 'pending';
-                }
-                
-                row.innerHTML = `
-                    <td>${order.id}</td>
-                    <td>${order.customer}</td>
-                    <td>${formatDate(order.date)}</td>
-                    <td>$${order.amount.toFixed(2)}</td>
-                    <td><span class="status ${statusClass}">${capitalizeFirstLetter(order.status)}</span></td>
-                    <td>
-                        <button class="action-btn view-order" data-id="${order.id}"><i class="fas fa-eye"></i></button>
-                        <button class="action-btn print-order" data-id="${order.id}"><i class="fas fa-print"></i></button>
-                    </td>
-                `;
-                
-                recentOrdersBody.appendChild(row);
-            });
-            
-            // Add event listeners to action buttons
-            document.querySelectorAll('.view-order').forEach(button => {
-                button.addEventListener('click', function() {
-                    const orderId = this.getAttribute('data-id');
-                    viewOrder(orderId);
-                });
-            });
-        }
-
         // View product details
         function viewProduct(productId) {
             const product = productsData.find(p => p.id === productId);
             if (product) {
-                showToast(`Viewing product: ${product.name}`, 'info');
-                // In a real app, you would show a detailed view or modal
+                currentProductId = productId;
+                
+                // Calculate discounted price if applicable
+                const discountedPrice = product.discount > 0 
+                    ? product.price * (1 - product.discount / 100)
+                    : null;
+                
+                // Create product view HTML
+                productViewContainer.innerHTML = `
+                    <div class="product-view-images">
+                        <img src="${product.images[0]}" alt="${product.name}" class="product-view-main-image" id="mainProductImage">
+                        <div class="product-view-thumbnails">
+                            ${product.images.map((img, index) => `
+                                <img src="${img}" alt="Thumbnail ${index + 1}" class="product-view-thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}">
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="product-view-details">
+                        <h1 class="product-view-title">${product.name}</h1>
+                        ${product.badge ? `<span class="product-view-badge">${capitalizeFirstLetter(product.badge)}</span>` : ''}
+                        <div class="product-view-price">
+                            ${discountedPrice 
+                                ? `<span class="product-view-original-price">$${product.price.toFixed(2)}</span>
+                                   <span class="product-view-discount">(${product.discount}% OFF)</span><br>
+                                   <span>$${discountedPrice.toFixed(2)}</span>`
+                                : `$${product.price.toFixed(2)}`}
+                        </div>
+                        <div class="product-view-meta">
+                            <p><strong>SKU:</strong> ${product.sku}</p>
+                            <p><strong>Category:</strong> ${capitalizeFirstLetter(product.category)} > ${capitalizeFirstLetter(product.subcategory)} > ${capitalizeFirstLetter(product.class)}</p>
+                            <p><strong>Brand:</strong> ${product.brand === 'haklim' ? 'Haklim' : capitalizeFirstLetter(product.brand)}</p>
+                            <p><strong>Status:</strong> <span class="status ${product.status === 'active' ? 'completed' : 'inactive'}">${capitalizeFirstLetter(product.status)}</span></p>
+                            <p><strong>Stock:</strong> ${product.stock} units</p>
+                        </div>
+                        ${product.variants && (product.variants.colors.length > 0 || product.variants.sizes.length > 0) ? `
+                            <div class="product-view-meta">
+                                <p><strong>Variants:</strong></p>
+                                ${product.variants.colors.length > 0 ? `<p>Colors: ${product.variants.colors.join(', ')}</p>` : ''}
+                                ${product.variants.sizes.length > 0 ? `<p>Sizes: ${product.variants.sizes.join(', ')}</p>` : ''}
+                            </div>
+                        ` : ''}
+                        <div class="product-view-features">
+                            <h4>Features</h4>
+                            <ul>
+                                ${product.features.map(feature => `<li>${feature}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="product-view-description">
+                            <h4>Description</h4>
+                            <p>${product.description}</p>
+                        </div>
+                    </div>
+                `;
+                
+                // Add event listeners to thumbnails
+                document.querySelectorAll('.product-view-thumbnail').forEach(thumb => {
+                    thumb.addEventListener('click', function() {
+                        const index = this.getAttribute('data-index');
+                        document.querySelector('.product-view-main-image').src = product.images[index];
+                        document.querySelectorAll('.product-view-thumbnail').forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
+                
+                showModal(productViewModal);
             }
         }
 
@@ -1788,27 +2940,255 @@
         function editProduct(productId) {
             const product = productsData.find(p => p.id === productId);
             if (product) {
+                currentProductId = productId;
                 productModalTitle.textContent = 'Edit Product';
                 
+                // Disable category select for editing (shouldn't change category)
+                productCategorySelect.disabled = true;
+                
                 // Populate form with product data
+                document.getElementById('productCategory').value = product.category;
+                
+                // Trigger change event to populate subcategories
+                const event = new Event('change');
+                productCategorySelect.dispatchEvent(event);
+                
+                // Set subcategory after a small delay to allow options to populate
+                setTimeout(() => {
+                    document.getElementById('productSubcategory').value = product.subcategory;
+                    const subcategoryEvent = new Event('change');
+                    document.getElementById('productSubcategory').dispatchEvent(subcategoryEvent);
+                    
+                    setTimeout(() => {
+                        document.getElementById('productClass').value = product.class;
+                        const classEvent = new Event('change');
+                        document.getElementById('productClass').dispatchEvent(classEvent);
+                        
+                        setTimeout(() => {
+                            document.getElementById('productBrand').value = product.brand;
+                            if (product.brand === 'other') {
+                                otherBrandInput.style.display = 'block';
+                                otherBrandInput.value = product.brand;
+                            }
+                        }, 50);
+                    }, 50);
+                }, 50);
+                
                 document.getElementById('productName').value = product.name;
                 document.getElementById('productSku').value = product.sku;
                 document.getElementById('productPrice').value = product.price;
+                document.getElementById('productDiscount').value = product.discount;
                 document.getElementById('productStock').value = product.stock;
-                document.getElementById('productCategorySelect').value = product.category;
                 document.getElementById('productStatusSelect').value = product.status;
+                document.getElementById('productBadge').value = product.badge || '';
                 document.getElementById('productDescription').value = product.description;
+                
+                // Populate features
+                featuresList.innerHTML = '';
+                product.features.forEach(feature => {
+                    const featureTag = document.createElement('div');
+                    featureTag.className = 'feature-tag';
+                    featureTag.innerHTML = `
+                        ${feature}
+                        <span class="remove-feature">&times;</span>
+                    `;
+                    featuresList.appendChild(featureTag);
+                    
+                    // Add event listener to remove button
+                    featureTag.querySelector('.remove-feature').addEventListener('click', function() {
+                        featureTag.remove();
+                    });
+                });
+                document.getElementById('productFeatures').value = JSON.stringify(product.features);
+                
+                // Populate variants
+                if (product.variants && (product.variants.colors.length > 0 || product.variants.sizes.length > 0)) {
+                    hasVariantsToggle.checked = true;
+                    variantsContainer.style.display = 'block';
+                    
+                    // Populate colors
+                    colorValues.innerHTML = '';
+                    product.variants.colors.forEach(color => {
+                        const colorTag = document.createElement('div');
+                        colorTag.className = 'variant-value-tag';
+                        colorTag.innerHTML = `
+                            ${color}
+                            <span class="remove-value" data-type="color">&times;</span>
+                        `;
+                        colorValues.appendChild(colorTag);
+                    });
+                    
+                    // Populate sizes
+                    sizeValues.innerHTML = '';
+                    product.variants.sizes.forEach(size => {
+                        const sizeTag = document.createElement('div');
+                        sizeTag.className = 'variant-value-tag';
+                        sizeTag.innerHTML = `
+                            ${size}
+                            <span class="remove-value" data-type="size">&times;</span>
+                        `;
+                        sizeValues.appendChild(sizeTag);
+                    });
+                    
+                    document.getElementById('productVariants').value = JSON.stringify(product.variants);
+                } else {
+                    hasVariantsToggle.checked = false;
+                    variantsContainer.style.display = 'none';
+                    document.getElementById('productVariants').value = '';
+                }
+                
+                // Populate images
+                imagesPreviewContainer.innerHTML = '';
+                product.images.forEach((img, index) => {
+                    const imgPreview = document.createElement('div');
+                    imgPreview.className = 'media-preview';
+                    imgPreview.innerHTML = `
+                        <img src="${img}" alt="Product Image ${index + 1}">
+                        <button class="remove-media" data-index="${index}">&times;</button>
+                    `;
+                    imagesPreviewContainer.appendChild(imgPreview);
+                });
+                
+                // Populate video if exists
+                videoPreviewContainer.innerHTML = '';
+                if (product.video) {
+                    const videoPreview = document.createElement('div');
+                    videoPreview.className = 'media-preview';
+                    videoPreview.innerHTML = `
+                        <video controls>
+                            <source src="${product.video}" type="video/mp4">
+                        </video>
+                        <button class="remove-media" data-type="video">&times;</button>
+                    `;
+                    videoPreviewContainer.appendChild(videoPreview);
+                }
                 
                 showModal(productModal);
             }
+        }
+
+        // Save product
+        function saveProduct() {
+            // Get form values
+            const category = document.getElementById('productCategory').value;
+            const subcategory = document.getElementById('productSubcategory').value;
+            const productClass = document.getElementById('productClass').value;
+            let brand = document.getElementById('productBrand').value;
+            
+            // If brand is "other", use the input value
+            if (brand === 'other') {
+                brand = document.getElementById('otherBrandInput').value.toLowerCase().replace(/\s+/g, '_');
+            }
+            
+            const name = document.getElementById('productName').value;
+            const sku = document.getElementById('productSku').value;
+            const price = parseFloat(document.getElementById('productPrice').value);
+            const discount = parseInt(document.getElementById('productDiscount').value) || 0;
+            const stock = parseInt(document.getElementById('productStock').value);
+            const status = document.getElementById('productStatusSelect').value;
+            const badge = document.getElementById('productBadge').value || null;
+            const description = document.getElementById('productDescription').value;
+            
+            // Get features from the list
+            const features = [];
+            document.querySelectorAll('.feature-tag').forEach(tag => {
+                features.push(tag.textContent.replace('×', '').trim());
+            });
+            
+            // Get variants if enabled
+            let variants = { colors: [], sizes: [] };
+            if (hasVariantsToggle.checked) {
+                document.querySelectorAll('#colorValues .variant-value-tag').forEach(tag => {
+                    variants.colors.push(tag.textContent.replace('×', '').trim());
+                });
+                document.querySelectorAll('#sizeValues .variant-value-tag').forEach(tag => {
+                    variants.sizes.push(tag.textContent.replace('×', '').trim());
+                });
+            }
+            
+            // Get images (in a real app, you would upload these to a server)
+            const images = [];
+            document.querySelectorAll('#imagesPreviewContainer .media-preview img').forEach(img => {
+                images.push(img.src);
+            });
+            
+            // Get video (in a real app, you would upload this to a server)
+            let video = null;
+            const videoPreview = document.querySelector('#videoPreviewContainer video');
+            if (videoPreview) {
+                video = videoPreview.querySelector('source').src;
+            }
+            
+            // Validate required fields
+            if (!category || !subcategory || !productClass || !brand || !name || !sku || isNaN(price) || isNaN(stock)) {
+                showToast('Please fill in all required fields', 'error');
+                return;
+            }
+            
+            // Create or update product
+            if (currentProductId) {
+                // Update existing product
+                const productIndex = productsData.findIndex(p => p.id === currentProductId);
+                if (productIndex !== -1) {
+                    productsData[productIndex] = {
+                        ...productsData[productIndex],
+                        category,
+                        subcategory,
+                        class: productClass,
+                        brand,
+                        name,
+                        sku,
+                        price,
+                        discount,
+                        stock,
+                        status,
+                        badge,
+                        features,
+                        description,
+                        variants,
+                        images,
+                        video
+                    };
+                    
+                    showToast('Product updated successfully', 'success');
+                }
+            } else {
+                // Create new product
+                const newProduct = {
+                    id: productsData.length > 0 ? Math.max(...productsData.map(p => p.id)) + 1 : 1,
+                    category,
+                    subcategory,
+                    class: productClass,
+                    brand,
+                    name,
+                    sku,
+                    price,
+                    discount,
+                    stock,
+                    status,
+                    badge,
+                    features,
+                    description,
+                    variants,
+                    images,
+                    video
+                };
+                
+                productsData.push(newProduct);
+                showToast('Product added successfully', 'success');
+            }
+            
+            // Refresh products table and close modal
+            renderProductsTable();
+            hideModal(productModal);
         }
 
         // Delete product
         function deleteProduct(productId) {
             const product = productsData.find(p => p.id === productId);
             if (product) {
-                if (confirm(`Are you sure you want to delete "${product.name}"?`)) {
-                    // In a real app, you would delete from the database
+                if (confirm(`Are you sure you want to delete "${product.name}"? This action cannot be undone.`)) {
+                    productsData = productsData.filter(p => p.id !== productId);
                     showToast(`Product "${product.name}" deleted`, 'success');
                     renderProductsTable();
                 }
@@ -1819,6 +3199,8 @@
         function viewOrder(orderId) {
             const order = ordersData.find(o => o.id === orderId);
             if (order) {
+                currentOrderId = orderId;
+                
                 // Populate order details
                 document.getElementById('modalOrderId').textContent = order.id;
                 document.getElementById('modalOrderDate').textContent = formatDate(order.date);
@@ -1830,6 +3212,7 @@
                 document.getElementById('modalCustomerEmail').textContent = order.email;
                 document.getElementById('modalCustomerPhone').textContent = order.phone;
                 document.getElementById('modalShippingAddress').textContent = order.shippingAddress;
+                document.getElementById('orderNotes').value = order.notes || '';
                 
                 // Populate order items
                 modalOrderItems.innerHTML = '';
@@ -1871,6 +3254,110 @@
             } else if (status === 'pending') {
                 steps[0].classList.add('active');
             }
+        }
+
+        // Add feature to product
+        function addFeature() {
+            const feature = featureInput.value.trim();
+            if (feature) {
+                const featureTag = document.createElement('div');
+                featureTag.className = 'feature-tag';
+                featureTag.innerHTML = `
+                    ${feature}
+                    <span class="remove-feature">&times;</span>
+                `;
+                featuresList.appendChild(featureTag);
+                featureInput.value = '';
+                
+                // Add event listener to remove button
+                featureTag.querySelector('.remove-feature').addEventListener('click', function() {
+                    featureTag.remove();
+                });
+            }
+        }
+
+        // Add variant value (color or size)
+        function addVariantValue(type) {
+            const input = type === 'color' ? colorInput : sizeInput;
+            const value = input.value.trim();
+            const container = type === 'color' ? colorValues : sizeValues;
+            
+            if (value) {
+                const valueTag = document.createElement('div');
+                valueTag.className = 'variant-value-tag';
+                valueTag.innerHTML = `
+                    ${value}
+                    <span class="remove-value" data-type="${type}">&times;</span>
+                `;
+                container.appendChild(valueTag);
+                input.value = '';
+                
+                // Add event listener to remove button
+                valueTag.querySelector('.remove-value').addEventListener('click', function() {
+                    valueTag.remove();
+                });
+            }
+        }
+
+        // Handle image upload
+        function handleImageUpload(files) {
+            if (files.length + imagesPreviewContainer.children.length > 5) {
+                showToast('You can upload a maximum of 5 images', 'error');
+                return;
+            }
+            
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                if (!file.type.match('image.*')) continue;
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imgPreview = document.createElement('div');
+                    imgPreview.className = 'media-preview';
+                    imgPreview.innerHTML = `
+                        <img src="${e.target.result}" alt="Uploaded Image">
+                        <button class="remove-media" data-index="${imagesPreviewContainer.children.length}">&times;</button>
+                    `;
+                    imagesPreviewContainer.appendChild(imgPreview);
+                    
+                    // Add event listener to remove button
+                    imgPreview.querySelector('.remove-media').addEventListener('click', function() {
+                        imgPreview.remove();
+                    });
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Handle video upload
+        function handleVideoUpload(file) {
+            if (!file.type.match('video.*')) {
+                showToast('Please upload a valid video file', 'error');
+                return;
+            }
+            
+            // Clear previous video
+            videoPreviewContainer.innerHTML = '';
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const videoPreview = document.createElement('div');
+                videoPreview.className = 'media-preview';
+                videoPreview.innerHTML = `
+                    <video controls>
+                        <source src="${e.target.result}" type="${file.type}">
+                    </video>
+                    <button class="remove-media" data-type="video">&times;</button>
+                `;
+                videoPreviewContainer.appendChild(videoPreview);
+                
+                // Add event listener to remove button
+                videoPreview.querySelector('.remove-media').addEventListener('click', function() {
+                    videoPreview.remove();
+                    productVideoInput.value = '';
+                });
+            };
+            reader.readAsDataURL(file);
         }
 
         // Initialize charts
@@ -1918,6 +3405,11 @@
                         tooltip: {
                             mode: 'index',
                             intersect: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: $${context.raw.toLocaleString()}`;
+                                }
+                            }
                         }
                     },
                     scales: {
