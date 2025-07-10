@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <style>
         /* ===== Base Styles ===== */
         :root {
@@ -40,7 +43,10 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 {
+        h1,
+        h2,
+        h3,
+        h4 {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
             letter-spacing: 0.5px;
@@ -335,12 +341,19 @@
         }
 
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
                 transform: translateY(0);
             }
+
             40% {
                 transform: translateY(-10px);
             }
+
             60% {
                 transform: translateY(-5px);
             }
@@ -871,7 +884,8 @@
             transition: var(--transition);
         }
 
-        .product-thumbnail:hover, .product-thumbnail.active {
+        .product-thumbnail:hover,
+        .product-thumbnail.active {
             border-color: var(--gold);
         }
 
@@ -1074,7 +1088,7 @@
             color: var(--charcoal);
         }
 
-        #checkout-form input, 
+        #checkout-form input,
         #checkout-form select,
         #checkout-form textarea {
             width: 100%;
@@ -1087,7 +1101,7 @@
             font-size: 15px;
         }
 
-        #checkout-form input:focus, 
+        #checkout-form input:focus,
         #checkout-form select:focus,
         #checkout-form textarea:focus {
             outline: none;
@@ -1177,8 +1191,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* ===== Animations ===== */
@@ -1187,6 +1206,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1252,7 +1272,7 @@
             transform: translateY(100px);
             opacity: 0;
             transition: var(--transition);
-            z-index: 1000;
+            z-index: 7000;
         }
 
         .cart-notification.show {
@@ -1265,18 +1285,20 @@
             .hero h1 {
                 font-size: 48px;
             }
-            
+
             .product-detail-container {
                 flex-direction: column;
             }
-            
+
             .product-main-image {
                 height: 300px;
             }
         }
 
         @media (max-width: 992px) {
-            .nav-links, .nav-icons {
+
+            .nav-links,
+            .nav-icons {
                 display: none;
             }
 
@@ -1343,7 +1365,7 @@
                 min-width: 280px;
                 padding: 30px 20px;
             }
-            
+
             .product-detail-actions {
                 flex-direction: column;
             }
@@ -1353,7 +1375,7 @@
             .logo {
                 font-size: 18px;
             }
-            
+
             .hero {
                 padding-top: 70px;
             }
@@ -1391,23 +1413,24 @@
             .quantity-control {
                 justify-content: center;
             }
-            
+
             .product-detail-title {
                 font-size: 22px;
             }
-            
+
             .product-detail-actions .btn {
                 width: 100%;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
             <a href="#" class="logo">Haklim<span>Fashions</span></a>
-            
+
             <nav class="nav-links">
                 <a href="#">Home</a>
                 <a href="#collections">Collections</a>
@@ -1415,7 +1438,7 @@
                 <a href="#">Journal</a>
                 <a href="#">Contact</a>
             </nav>
-            
+
             <div class="nav-icons">
                 <a href="#"><i class="fas fa-search"></i></a>
                 <a href="#"><i class="fas fa-user"></i></a>
@@ -1424,7 +1447,7 @@
                     <span class="cart-badge" id="cart-badge">0</span>
                 </a>
             </div>
-            
+
             <div class="mobile-icons">
                 <a href="#" id="mobile-search"><i class="fas fa-search"></i></a>
                 <a href="#" id="mobile-cart">
@@ -1461,11 +1484,13 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Timeless Elegance, Modern Sophistication</h1>
-                <p>Discover our curated collection of luxury pieces that blend traditional craftsmanship with contemporary design.</p>
+                <p>Discover our curated collection of luxury pieces that blend traditional craftsmanship with
+                    contemporary design.</p>
                 <a href="#collections" class="btn hero-btn">Explore Collections</a>
             </div>
         </div>
-        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80" alt="Luxury boutique interior" class="hero-image">
+        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80"
+            alt="Luxury boutique interior" class="hero-image">
         <div class="scroll-down">
             <i class="fas fa-chevron-down"></i>
         </div>
@@ -1478,7 +1503,7 @@
                 <h2>Featured Collection</h2>
                 <p>Our carefully selected pieces for the season</p>
             </div>
-            
+
             <div class="products-container">
                 <div class="products-grid" id="products-grid">
                     <!-- Default empty state -->
@@ -1488,7 +1513,7 @@
                         <p>Check back soon for our latest collection of luxury fashion items</p>
                     </div>
                 </div>
-                
+
                 <div class="pagination" id="pagination" style="display: none;">
                     <button class="pagination-btn" id="prev-page" disabled><i class="fas fa-chevron-left"></i></button>
                     <button class="pagination-btn" id="next-page" disabled><i class="fas fa-chevron-right"></i></button>
@@ -1504,11 +1529,12 @@
                 <h2>Client Testimonials</h2>
                 <p>What our clients say about us</p>
             </div>
-            
+
             <div class="testimonials-container" id="testimonials-container">
                 <!-- Testimonial 1 -->
                 <div class="testimonial-card">
-                    <p class="testimonial-text">The quality of craftsmanship is exceptional. I've purchased several pieces from Boutique Elegance and each one has exceeded my expectations.</p>
+                    <p class="testimonial-text">The quality of craftsmanship is exceptional. I've purchased several
+                        pieces from Boutique Elegance and each one has exceeded my expectations.</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">
                             <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah Johnson">
@@ -1526,10 +1552,11 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Testimonial 2 -->
                 <div class="testimonial-card">
-                    <p class="testimonial-text">Their attention to detail is unmatched. The Milano Handbag has become my everyday essential - it's both beautiful and functional.</p>
+                    <p class="testimonial-text">Their attention to detail is unmatched. The Milano Handbag has become my
+                        everyday essential - it's both beautiful and functional.</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">
                             <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Emily Chen">
@@ -1547,10 +1574,11 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Testimonial 3 -->
                 <div class="testimonial-card">
-                    <p class="testimonial-text">I appreciate their commitment to sustainable luxury. The materials are ethically sourced and the designs are timeless.</p>
+                    <p class="testimonial-text">I appreciate their commitment to sustainable luxury. The materials are
+                        ethically sourced and the designs are timeless.</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">
                             <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Rodriguez">
@@ -1568,10 +1596,11 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Testimonial 4 -->
                 <div class="testimonial-card">
-                    <p class="testimonial-text">The customer service is outstanding. They helped me find the perfect gift for my wife's anniversary.</p>
+                    <p class="testimonial-text">The customer service is outstanding. They helped me find the perfect
+                        gift for my wife's anniversary.</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">
                             <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="David Kim">
@@ -1589,10 +1618,11 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Testimonial 5 -->
                 <div class="testimonial-card">
-                    <p class="testimonial-text">I love how each piece tells a story. The craftsmanship is evident in every detail.</p>
+                    <p class="testimonial-text">I love how each piece tells a story. The craftsmanship is evident in
+                        every detail.</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">
                             <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Jessica Williams">
@@ -1611,7 +1641,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="testimonials-nav" id="testimonials-nav">
                 <div class="testimonial-dot active" data-index="0"></div>
                 <div class="testimonial-dot" data-index="1"></div>
@@ -1619,7 +1649,7 @@
                 <div class="testimonial-dot" data-index="3"></div>
                 <div class="testimonial-dot" data-index="4"></div>
             </div>
-            
+
             <button class="testimonial-nav-btn testimonial-prev" id="testimonial-prev">
                 <i class="fas fa-chevron-left"></i>
             </button>
@@ -1656,7 +1686,7 @@
                         <a href="#"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
-                
+
                 <!-- Column 2 -->
                 <div class="footer-col">
                     <h4>Shop</h4>
@@ -1668,7 +1698,7 @@
                         <li><a href="#">Gift Cards</a></li>
                     </ul>
                 </div>
-                
+
                 <!-- Column 3 -->
                 <div class="footer-col">
                     <h4>Information</h4>
@@ -1680,7 +1710,7 @@
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>
-                
+
                 <!-- Column 4 -->
                 <div class="footer-col">
                     <h4>Contact</h4>
@@ -1691,7 +1721,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p>&copy; 2023 Haklim Fashions Inc. All rights reserved.</p>
             </div>
@@ -1736,32 +1766,32 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="first-name">First Name</label>
-                        <input type="text" id="first-name" required>
+                        <input type="text" id="first-name" name="first_name" required>
                     </div>
                     <div class="form-group">
                         <label for="last-name">Last Name</label>
-                        <input type="text" id="last-name" required>
+                        <input type="text" id="last-name" name="last_name" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" required>
+                    <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" required>
+                    <input type="tel" id="phone" name="telephone" required>
                 </div>
- 
+
                 <div class="form-group">
                     <label for="delivery-method">Delivery Method</label>
-                    <select id="delivery-method" required>
+                    <select id="delivery-method" name="delivery_method" required>
                         <option value="">Select delivery method</option>
                         <option value="store1">Store Pickup - Nairobi CBD</option>
                         <option value="store2">Store Pickup - Westlands</option>
                         <option value="doorstep">Doorstep Delivery</option>
                     </select>
                 </div>
-                
+
                 <div id="address-fields" class="address-fields" style="display: none;">
                     <div class="form-row">
                         <div class="form-group">
@@ -1798,12 +1828,12 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="delivery-notes">Delivery Instructions</label>
-                    <textarea id="delivery-notes" rows="3"></textarea>
+                    <textarea id="delivery-notes" name="delivery_instructions" rows="3"></textarea>
                 </div>
-                
+
                 <h3>Payment Method</h3>
                 <div class="payment-methods">
                     <div class="payment-method" data-method="mpesa">
@@ -1824,7 +1854,7 @@
                     </div>
                 </div>
                 <input type="hidden" id="payment-method" required>
-                
+
                 <h3>Order Summary</h3>
                 <div class="summary-item">
                     <span>Subtotal:</span>
@@ -1838,7 +1868,7 @@
                     <span>Total:</span>
                     <span id="checkout-total">$0.00</span>
                 </div>
-                
+
                 <button type="submit" class="btn" id="complete-purchase-btn">Complete Purchase</button>
             </form>
         </div>
@@ -1854,7 +1884,8 @@
             </div>
             <div id="payment-iframe-container" style="display: none;">
                 <iframe src="https://www.google.com" frameborder="0"></iframe>
-                <button class="btn btn-outline" id="cancel-payment-btn" style="margin-top: 20px;">Cancel Payment</button>
+                <button class="btn btn-outline" id="cancel-payment-btn" style="margin-top: 20px;">Cancel
+                    Payment</button>
             </div>
         </div>
     </div>
@@ -1893,12 +1924,12 @@
 
         // Cart state
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        
+
         // Products state
         let products = [];
         let currentPage = 1;
         const productsPerPage = 8;
-        
+
         // Testimonials state
         let currentTestimonial = 0;
         let autoScrollInterval;
@@ -1909,27 +1940,27 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Load products
             fetchProducts();
-            
+
             // Update cart badge
             updateCartBadge();
-            
+
             // Initialize mobile menu
             initMobileMenu();
-            
+
             // Initialize cart functionality
             initCart();
-            
+
             // Initialize header scroll effect
             initHeaderScroll();
-            
+
             // Initialize smooth scrolling for anchor links
             initSmoothScrolling();
-            
+
             // Initialize testimonial auto-scroll
             initTestimonialScroll();
         });
 
-         // Fetch products from the server
+        // Fetch products from the server
         function fetchProducts() {
             fetch('/fetch/get-products')
                 .then(response => {
@@ -1962,15 +1993,15 @@
                 pagination.style.display = 'none';
                 return;
             }
-            
+
             // Calculate pagination
             const startIndex = (currentPage - 1) * productsPerPage;
             const endIndex = startIndex + productsPerPage;
             const paginatedProducts = products.slice(startIndex, endIndex);
-            
+
             productsGrid.innerHTML = paginatedProducts.map(product => {
                 const discountPercentage = product.discount ? Math.round((product.discount / product.price) * 100) : 0;
-                
+
                 return `
                     <div class="product-card" data-id="${product.id}">
                         <div class="product-image">
@@ -1989,11 +2020,11 @@
                     </div>
                 `;
             }).join('');
-            
+
             // Update pagination buttons
             prevPageBtn.disabled = currentPage === 1;
             nextPageBtn.disabled = endIndex >= products.length;
-            
+
             // Add click event to product images for detail modal
             document.querySelectorAll('.product-image').forEach(image => {
                 image.addEventListener('click', (e) => {
@@ -2009,7 +2040,7 @@
         // Show product detail modal
         function showProductDetail(product) {
             const discountPercentage = product.discount ? Math.round((product.discount / product.price) * 100) : 0;
-            
+
             productDetailContainer.innerHTML = `
                 <div class="product-detail-images">
                     <img src="${product.images[0]}" alt="${product.name}" class="product-main-image">
@@ -2047,23 +2078,23 @@
                     </div>
                 </div>
             `;
-            
+
             // Set product ID on the add to cart button
             const addToCartBtn = document.getElementById('add-to-cart-detail');
             addToCartBtn.dataset.id = product.id;
-            
+
             // Add click event to thumbnails
             document.querySelectorAll('.product-thumbnail').forEach(thumb => {
                 thumb.addEventListener('click', (e) => {
                     e.preventDefault();
                     const mainImage = document.querySelector('.product-main-image');
                     mainImage.src = e.currentTarget.src;
-                    
+
                     document.querySelectorAll('.product-thumbnail').forEach(t => t.classList.remove('active'));
                     e.currentTarget.classList.add('active');
                 });
             });
-            
+
             toggleModal(productDetailModal);
         }
 
@@ -2073,9 +2104,9 @@
                 pagination.style.display = 'none';
                 return;
             }
-            
+
             pagination.style.display = 'flex';
-            
+
             prevPageBtn.addEventListener('click', () => {
                 if (currentPage > 1) {
                     currentPage--;
@@ -2083,7 +2114,7 @@
                     window.scrollTo({ top: document.getElementById('collections').offsetTop - 80, behavior: 'smooth' });
                 }
             });
-            
+
             nextPageBtn.addEventListener('click', () => {
                 if (currentPage * productsPerPage < products.length) {
                     currentPage++;
@@ -2102,29 +2133,29 @@
                     scrollToTestimonial(index);
                 });
             });
-            
+
             // Set up prev/next buttons
             testimonialPrevBtn.addEventListener('click', () => {
                 scrollToTestimonial((currentTestimonial - 1 + testimonialCount) % testimonialCount);
             });
-            
+
             testimonialNextBtn.addEventListener('click', () => {
                 scrollToTestimonial((currentTestimonial + 1) % testimonialCount);
             });
-            
+
             // Auto-scroll
             startAutoScroll();
-            
+
             // Pause on hover
             testimonialsContainer.addEventListener('mouseenter', () => {
                 clearInterval(autoScrollInterval);
             });
-            
+
             testimonialsContainer.addEventListener('mouseleave', () => {
                 startAutoScroll();
             });
         }
-        
+
         function scrollToTestimonial(index) {
             currentTestimonial = index;
             const card = testimonialCards[index];
@@ -2132,13 +2163,13 @@
                 left: card.offsetLeft - testimonialsContainer.offsetLeft,
                 behavior: 'smooth'
             });
-            
+
             // Update active dot
             testimonialDots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === index);
             });
         }
-        
+
         function startAutoScroll() {
             clearInterval(autoScrollInterval);
             autoScrollInterval = setInterval(() => {
@@ -2151,7 +2182,7 @@
             hamburger.addEventListener('click', () => {
                 mobileMenu.classList.toggle('active');
                 document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
-                
+
                 // Toggle hamburger icon
                 const icon = hamburger.querySelector('i');
                 if (mobileMenu.classList.contains('active')) {
@@ -2169,7 +2200,7 @@
                 hamburger.querySelector('i').classList.remove('fa-times');
                 hamburger.querySelector('i').classList.add('fa-bars');
             });
-            
+
             // Close menu when clicking a link
             document.querySelectorAll('.mobile-links a').forEach(link => {
                 link.addEventListener('click', () => {
@@ -2189,7 +2220,7 @@
                 updateCartDisplay();
                 toggleModal(cartModal);
             });
-            
+
             // Open cart modal from mobile icon
             mobileCartIcon.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -2200,7 +2231,7 @@
             // Proceed to checkout
             checkoutBtn.addEventListener('click', () => {
                 if (cart.length === 0) return;
-                
+
                 toggleModal(cartModal);
                 toggleModal(checkoutModal);
                 updateCheckoutSummary();
@@ -2220,21 +2251,6 @@
                 });
             });
 
-            // Submit checkout form
-            checkoutForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                if (!paymentMethodInput.value) {
-                    alert('Please select a payment method');
-                    return;
-                }
-                
-                // Disable button and show processing
-                completePurchaseBtn.disabled = true;
-                completePurchaseBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-                
-                toggleModal(checkoutModal);
-                processPayment();
-            });
 
             // Complete payment
             cancelPaymentBtn.addEventListener('click', () => {
@@ -2247,11 +2263,11 @@
             document.addEventListener('click', (e) => {
                 if (e.target.classList.contains('add-to-cart') || e.target.id === 'add-to-cart-detail') {
                     e.preventDefault();
-                    const productId = e.target.classList.contains('add-to-cart') 
+                    const productId = e.target.classList.contains('add-to-cart')
                         ? parseInt(e.target.closest('.product-card').dataset.id)
                         : e.target.dataset.id;
                     addToCart(productId);
-                    
+
                     // If adding from detail modal, close it
                     if (e.target.id === 'add-to-cart-detail') {
                         toggleModal(productDetailModal);
@@ -2276,6 +2292,135 @@
             });
         }
 
+        // Submit checkout form
+        checkoutForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Validate payment method
+            const paymentMethod = document.getElementById('payment-method').value;
+            if (!paymentMethod) {
+                showNotification('Please select a payment method');
+                return;
+            }
+
+            // Get form values
+            const formData = new FormData(checkoutForm);
+            const formValues = Object.fromEntries(formData.entries());
+
+
+            // Basic validation
+            const requiredFields = ['fullName', 'email', 'phone', 'shippingAddress', 'city', 'zipCode', 'country'];
+            const missingFields = requiredFields.filter(field => !formValues[field]);
+
+            /*
+            if (missingFields.length > 0) {
+                showToast('Please fill all required fields');
+                return;
+            }
+            */
+            try {
+                // Show loading state
+                const submitBtn = checkoutForm.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+                let doorstep_delivery_details = {
+                    delivery_address: {
+                        city: formValues.city,
+                        area: formValues.area,
+                        landmark: formValues.landmark,
+                        building: formValues.building,
+                        house_number: formValues.house_number,
+                        location_ink: formValues.location_ink,
+                        delivery_notes: formValues.delivery_notes
+
+                    }
+                }
+
+                let delivery_address = { delivery_address: formValues.delivery_method };
+
+                if (formValues.delivery_method === 'doorstep') {
+                    delivery_address = doorstep_delivery_details;
+
+                }
+
+                // Prepare order data - send raw cart data
+                const orderData = {
+                    cart: cart.map(item => ({
+                        id: item.id,
+                        quantity: item.quantity
+                    })),
+                    customerInfo: {
+                        firstname: formValues.first_name,
+                        lastname: formValues.last_name,
+                        email: formValues.email,
+                        telephone: formValues.telephone,
+                        delivery_method: formValues.delivery_method,
+                        delivery_address: delivery_address,
+                        promo_code: formValues.promo_code,
+                        packaging_instructions: formValues.packaging_instructions
+                    },
+                    paymentMethod: paymentMethod
+                };
+
+                // Send to backend
+                const response = await fetch('/checkout/place-order', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(orderData),
+                    credentials: 'include' // Include cookies for session
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.message || 'Failed to process order');
+                }
+
+                // Handle different response scenarios
+                if (result.success) {
+                    // Clear cart on successful order creation
+                    cart = [];
+                    saveCart();
+                    updateCartCount();
+
+                    // Redirect to payment gateway
+                    closeOverlays()
+                    openPayment()
+                    paymentIframe.src = result.redirectUrl;
+                    //window.location.href = result.redirectUrl;
+                } else if (result.error) {
+                    // Handle specific error cases
+                    if (result.error === 'PRODUCT_UNAVAILABLE') {
+                        showNotification('Some products are no longer available. Please update your cart.');
+                        // Optionally refresh product data
+                        //await fetchProducts();
+                    } else {
+                        showNotification(result.message || 'Checkout failed. Please try again.');
+                    }
+                }
+            } catch (error) {
+                console.error('Checkout error:', error);
+
+                // Handle different error types
+                if (error.message.includes('Failed to fetch')) {
+                    showNotification('Network error. Please check your connection.');
+                } else if (error.message.includes('timeout')) {
+                    showNotification('Request timeout. Please try again.');
+                } else {
+                    showNotification(error.message || 'An unexpected error occurred.');
+                }
+
+                // Reset submit button
+                const submitBtn = checkoutForm.querySelector('button[type="submit"]');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Place Order';
+            }
+        });
+
+
         // Initialize header scroll effect
         function initHeaderScroll() {
             const header = document.querySelector('.header');
@@ -2291,11 +2436,11 @@
         // Initialize smooth scrolling
         function initSmoothScrolling() {
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
+                anchor.addEventListener('click', function (e) {
                     e.preventDefault();
-                    
+
                     if (this.getAttribute('href') === '#') return;
-                    
+
                     const target = document.querySelector(this.getAttribute('href'));
                     if (target) {
                         window.scrollTo({
@@ -2311,7 +2456,7 @@
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
-            
+
             const existingItem = cart.find(item => item.id === productId);
             if (existingItem) {
                 existingItem.quantity++;
@@ -2321,10 +2466,10 @@
                     quantity: 1
                 });
             }
-            
+
             saveCart();
             updateCartBadge();
-            
+
             // Show added to cart notification
             showNotification(`${product.name} added to cart!`);
         }
@@ -2335,11 +2480,11 @@
             notification.className = 'cart-notification';
             notification.innerHTML = `<span>${message}</span>`;
             document.body.appendChild(notification);
-            
+
             setTimeout(() => {
                 notification.classList.add('show');
             }, 10);
-            
+
             setTimeout(() => {
                 notification.classList.remove('show');
                 setTimeout(() => {
@@ -2369,9 +2514,9 @@
                         <div class="cart-item-remove" data-id="${item.id}">&times;</div>
                     </div>
                 `).join('');
-                
+
                 checkoutBtn.style.display = 'block';
-                
+
                 // Add quantity control functionality
                 document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
                     btn.addEventListener('click', (e) => {
@@ -2385,7 +2530,7 @@
                         }
                     });
                 });
-                
+
                 document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
                     btn.addEventListener('click', (e) => {
                         const productId = e.target.dataset.id;
@@ -2396,7 +2541,7 @@
                         updateCartBadge();
                     });
                 });
-                
+
                 document.querySelectorAll('.quantity-input').forEach(input => {
                     input.addEventListener('change', (e) => {
                         const productId = e.target.dataset.id;
@@ -2469,16 +2614,16 @@
         // Process payment
         function processPayment() {
             toggleModal(paymentModal);
-            
+
             // Show processing spinner
             document.querySelector('.payment-processing').style.display = 'block';
             document.getElementById('payment-iframe-container').style.display = 'none';
-            
+
             // Simulate processing for 3 seconds
             setTimeout(() => {
                 document.querySelector('.payment-processing').style.display = 'none';
                 document.getElementById('payment-iframe-container').style.display = 'block';
-                
+
                 // Reset complete purchase button
                 completePurchaseBtn.disabled = false;
                 completePurchaseBtn.textContent = 'Complete Purchase';
@@ -2486,4 +2631,5 @@
         }
     </script>
 </body>
+
 </html>
