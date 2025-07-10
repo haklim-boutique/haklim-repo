@@ -1,254 +1,411 @@
 const formidable = require('formidable');
 const cloudinary = require('cloudinary').v2;
 const db = require('../models/db');
-//const fs = require('fs');
+const fs = require('fs');
+
+// Cloudinary Configuration
+cloudinary.config({
+      cloud_name: 'dxpahbia0',
+    api_key: '255881524771173',
+    api_secret: 'FN2lTsIZDsOrLrWAAybcoKNUpn8'
+});
 
 
-// Sample products data
-const products = [
-    {
-        id: "1",
-        name: "Fashion Open Shoe",
-        category: "Footwear",
-        subcategory: "Women's Shoes",
-        brand: "Haklim",
-        price: 450,
-        discount: 55,
-        discounted_price: 395,
-        stock: 15,
-        features: [
-            "Premium leather upper",
-            "Comfortable cushioned insole",
-            "Breathable lining",
-            "Flexible rubber outsole",
-            "Available in multiple colors"
-        ],
-        description: "Elegant open-toe shoes perfect for both casual and formal occasions. Handcrafted with premium materials for maximum comfort and style.",
-        images: ["/images/haklim-smpl1.jpg"],
-        video: null,
-        status: "active",
-        badge: "New"
-    },
-    {
-        id: "2",
-        name: "Florentine Silk Scarf",
-        category: "Accessories",
-        subcategory: "Scarves",
-        brand: "Haklim",
-        price: 185,
-        discount: 0,
-        discounted_price: 185,
-        stock: 8,
-        features: [
-            "100% pure silk",
-            "Hand-rolled edges",
-            "Oeko-Tex certified dyes",
-            "Lightweight and breathable",
-            "Versatile styling options"
-        ],
-        description: "Luxurious silk scarf with intricate Florentine patterns. A timeless accessory that adds elegance to any outfit.",
-        images: ["https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1026&q=80"],
-        video: null,
-        status: "active",
-        badge: "Bestseller"
-    },
-    {
-        id: "3",
-        name: "Venezia Leather Wallet",
-        category: "Accessories",
-        subcategory: "Wallets",
-        brand: "Haklim",
-        price: 275,
-        discount: 0,
-        discounted_price: 275,
-        stock: 12,
-        features: [
-            "Genuine Italian leather",
-            "Multiple card slots",
-            "RFID blocking technology",
-            "Slim profile design",
-            "Hand-stitched construction"
-        ],
-        description: "Sophisticated leather wallet inspired by Venetian craftsmanship. Compact yet spacious enough for all your essentials.",
-        images: ["https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80"],
-        video: null,
-        status: "active",
-        badge: null
-    },
-    {
-        id: "4",
-        name: "Cashmere Crewneck",
-        category: "Apparel",
-        subcategory: "Sweaters",
-        brand: "Haklim",
-        price: 320,
-        discount: 0,
-        discounted_price: 320,
-        stock: 5,
-        features: [
-            "100% Mongolian cashmere",
-            "Ribbed cuffs and hem",
-            "Classic crewneck design",
-            "Machine washable",
-            "Available in neutral tones"
-        ],
-        description: "Ultra-soft cashmere sweater that provides warmth without bulk. A wardrobe essential for effortless elegance.",
-        images: ["https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80"],
-        video: null,
-        status: "active",
-        badge: "Limited"
-    },
-    {
-        id: "5",
-        name: "Silk Evening Gown",
-        category: "Apparel",
-        subcategory: "Dresses",
-        brand: "Haklim",
-        price: 650,
-        discount: 100,
-        discounted_price: 550,
-        stock: 3,
-        features: [
-            "100% pure silk charmeuse",
-            "Hidden back zipper",
-            "Bias-cut silhouette",
-            "Hand-finished seams",
-            "Dry clean only"
-        ],
-        description: "Stunning silk evening gown that drapes beautifully. Perfect for special occasions where you want to make an unforgettable impression.",
-        images: ["https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"],
-        video: null,
-        status: "active",
-        badge: "New"
-    },
-    {
-        id: "6",
-        name: "Leather Crossbody Bag",
-        category: "Accessories",
-        subcategory: "Bags",
-        brand: "Haklim",
-        price: 280,
-        discount: 0,
-        discounted_price: 280,
-        stock: 7,
-        features: [
-            "Full-grain leather",
-            "Adjustable strap",
-            "Multiple compartments",
-            "Gold-tone hardware",
-            "Protective feet on base"
-        ],
-        description: "Chic and practical crossbody bag that transitions seamlessly from day to night. Fits all your essentials without bulk.",
-        images: ["https://images.unsplash.com/photo-1594035910387-fea47794261f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"],
-        video: null,
-        status: "active",
-        badge: null
-    },
-    {
-        id: "7",
-        name: "Wool Cashmere Coat",
-        category: "Apparel",
-        subcategory: "Outerwear",
-        brand: "Haklim",
-        price: 500,
-        discount: 80,
-        discounted_price: 420,
-        stock: 4,
-        features: [
-            "80% wool, 20% cashmere blend",
-            "Notched lapel",
-            "Fully lined",
-            "Functional button closure",
-            "Side slit pockets"
-        ],
-        description: "Luxurious wool-cashmere blend coat that provides warmth without weight. A timeless piece that will last for seasons to come.",
-        images: ["https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80"],
-        video: null,
-        status: "active",
-        badge: "Sale"
-    },
-    {
-        id: "8",
-        name: "Linen Summer Dress",
-        category: "Apparel",
-        subcategory: "Dresses",
-        brand: "Haklim",
-        price: 195,
-        discount: 0,
-        discounted_price: 195,
-        stock: 10,
-        features: [
-            "100% organic linen",
-            "A-line silhouette",
-            "Concealed side zipper",
-            "Machine washable",
-            "Naturally breathable fabric"
-        ],
-        description: "Effortlessly chic linen dress perfect for warm weather. The relaxed fit and natural fabric make it incredibly comfortable.",
-        images: ["https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=734&q=80"],
-        video: null,
-        status: "active",
-        badge: null
-    },
-    {
-        id: "9",
-        name: "Velvet Blazer",
-        category: "Apparel",
-        subcategory: "Jackets",
-        brand: "Haklim",
-        price: 380,
-        discount: 0,
-        discounted_price: 380,
-        stock: 6,
-        features: [
-            "Luxury cotton velvet",
-            "Peak lapel",
-            "Functional button closure",
-            "Internal pocket",
-            "Dry clean only"
-        ],
-        description: "Opulent velvet blazer that adds instant sophistication. Perfect for elevating both formal and casual ensembles.",
-        images: ["https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1179&q=80"],
-        video: null,
-        status: "active",
-        badge: null
-    },
-    {
-        id: "10",
-        name: "Silk Pajama Set",
-        category: "Apparel",
-        subcategory: "Sleepwear",
-        brand: "Haklim",
-        price: 220,
-        discount: 0,
-        discounted_price: 220,
-        stock: 9,
-        features: [
-            "100% mulberry silk",
-            "Drawstring waist",
-            "Chinese collar",
-            "Hand-rolled seams",
-            "Machine washable"
-        ],
-        description: "Indulgent silk pajama set that makes bedtime luxurious. The perfect gift for someone special (or yourself).",
-        images: ["https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80"],
-        video: null,
-        status: "active",
-        badge: null
-    }
-];
 
 
 const fetchProducts = async (req, res) => {
      const productLoadQuery = 'SELECT * FROM products'; 
 try{
 const productsData = await db.query(productLoadQuery); 
-const storeID = productsData;
-console.log(storeID) 
+const products = productsData.rows;
+
+ res.json(products);
+ 
 } catch(err){
     console.error(err);
+    res.status(500).json({mesage: 'There was an error fetching data'})
 }
-    res.json(products);
 };
 
-module.exports = { fetchProducts }
+const fetchProductsAdmin = async (req, res) => {
+     const productLoadQuery = 'SELECT * FROM products'; 
+try{
+const productsData = await db.query(productLoadQuery); 
+const products = productsData.rows;
+
+ res.json(products);
+ 
+} catch(err){
+    console.error(err);
+    res.status(500).json({mesage: 'There was an error fetching data'})
+}
+};
+
+const postProduct = async (req, res) => {
+    
+    try {
+        const form = new formidable.IncomingForm({
+            multiples: true,
+            keepExtensions: true,
+            maxFileSize: 200 * 1024 * 1024, // 200MB max
+            maxFieldsSize: 20 * 1024 * 1024
+        });
+
+        form.parse(req, async (err, fields, files) => {
+            if (err) {
+                console.error('Form parsing error:', err);
+                return res.status(400).json({ 
+                    success: false,
+                    message: 'Error processing form data'
+                });
+            }
+
+            try {
+                // Extract and validate fields
+                const extractField = (field) => field ? (Array.isArray(field) ? field[0] : field) : null;
+                const category = extractField(fields.category);
+                const subcategory = extractField(fields.subcategory);
+                const productClass = extractField(fields.productClass);
+                const brand = extractField(fields.brand);
+                const name = extractField(fields.name);
+                const price = parseFloat(extractField(fields.price));
+                const discount = parseInt(extractField(fields.discount));
+                const stock = extractField(fields.stock);
+                const status = extractField(fields.status);
+                const badge = extractField(fields.badge);
+                const description = extractField(fields.description);
+                const variants = extractField(fields.variants);
+                
+                console.log('variants: '+ variants)
+              
+                //console.log(RE);
+                // Handle features with proper JSON validation
+                let features = [];
+                try {
+                    const featuresInput = extractField(fields.features);
+                    if (featuresInput) {
+                        features = typeof featuresInput === 'string' 
+                            ? JSON.parse(featuresInput) 
+                            : featuresInput;
+                    }
+                } catch (e) {
+                    console.warn('Invalid features format:', e);
+                    features = [];
+                }
+
+                // Process images
+                const imageFiles = Array.isArray(files.productImages) 
+                    ? files.productImages 
+                    : [files.productImages];
+                
+                const imageUploads = imageFiles.map(file => 
+                    uploadToCloudinary(file, 'image')
+                );
+                const imageResults = await Promise.all(imageUploads);
+                const imageUrls = imageResults.map(img => img.secure_url);
+
+                // Process video separately
+                let videoUrl = null;
+                if (files.productVideo && files.productVideo.filepath) {
+                    try {
+                        videoUrl = await uploadVideo(files.productVideo);
+                    } catch (videoError) {
+                        console.error('Video upload failed:', videoError);
+                    }
+                }
+
+                // Insert into database
+                const productId = await generateUniqueProductId();
+                const linkEndpoint = await generateLinkEndpoint();
+                const client = await db.connect();
+                
+                try {
+                    await client.query('BEGIN');
+                    
+                    const result = await client.query(`
+                        INSERT INTO products (
+                            id, name, category, subcategory, class,
+                            brand, badge, variations, price, discount, discounted_price,
+                            stock, features, description, images, video,
+                            status, link_endpoint, created_at, updated_at
+                        ) VALUES (
+                            $1, $2, $3, $4, $5, $6, $7, $8::jsonb, $9, $10, $11, $12,
+                            $13, $14, $15, $16::jsonb, $17, $18, NOW(), NOW()
+                        ) RETURNING *
+                    `, [
+                        productId,
+                        name,
+                        category,
+                        subcategory,
+                        productClass,
+                        brand,
+                        badge,
+                        variants,
+                        price,
+                        discount,
+                        price - discount,
+                        stock,
+                        features,
+                        description,
+                        imageUrls,
+                        videoUrl,
+                        'active',
+                        linkEndpoint
+                    ]);
+
+                    await client.query('COMMIT');
+                    console.log('data saved')
+                    return res.status(201).json({
+                        success: true,
+                        product: result.rows[0]
+                    });
+                    
+                } catch (dbError) {
+                    await client.query('ROLLBACK');
+                    console.error('Database error:', dbError);
+                    throw dbError;
+                } finally {
+                    client.release();
+                }
+            } catch (error) {
+                console.error('Processing error:', error);
+                return res.status(500).json({
+                    success: false,
+                    message: error.message
+                });
+            }
+        });
+    } catch (error) {
+        console.error('Server error:', error);
+        return res.status(500).json({
+            success: false,
+            message: 'Internal server error'
+        });
+    }
+};
+
+const editProduct  = async (req, res) => {
+    res.json({});
+}
+
+const deleteProduct = async (req, res) => {
+    const { productId } = req.params;
+    console.log(`Deletion started for product: ${productId}`);
+    const client = await db.connect();
+
+    try {
+        await client.query('BEGIN');
+
+        // 1. Fetch product data
+        const productQuery = 'SELECT * FROM products WHERE id = $1 FOR UPDATE';
+        const productResult = await client.query(productQuery, [productId]);
+        
+        if (productResult.rows.length === 0) {
+            await client.query('ROLLBACK');
+            return res.status(404).json({ 
+                success: false,
+                message: 'Product not found'
+            });
+        }
+
+        const product = productResult.rows[0];
+        console.log('Product found:', product);
+
+        // 2. Prepare all media URLs (images + video)
+        const mediaUrls = [...(product.images || [])];
+        if (product.video) mediaUrls.push(product.video);
+        console.log('Media URLs to delete:', mediaUrls);
+
+        // 3. Delete from Cloudinary
+        if (mediaUrls.length > 0) {
+            try {
+                for (const url of mediaUrls) {
+                    const publicId = extractPublicIdFromUrl(url);
+                    if (!publicId) {
+                        console.log('Skipping URL - no public ID found:', url);
+                        continue;
+                    }
+
+                    const resourceType = getResourceType(url);
+                    console.log(`Deleting ${resourceType} with public ID: ${publicId}`);
+
+                    await cloudinary.uploader.destroy(publicId, {
+                        resource_type: resourceType,
+                        invalidate: true
+                    });
+                    console.log(`Successfully deleted media: ${publicId}`);
+                }
+            } catch (cloudinaryError) {
+                console.error('Cloudinary deletion failed:', cloudinaryError);
+                await client.query('ROLLBACK');
+                return res.status(500).json({
+                    success: false,
+                    message: 'Failed to delete product media',
+                    error: cloudinaryError.message
+                });
+            }
+        }
+
+        // 4. Delete from database
+        const deleteQuery = `DELETE FROM products WHERE id = $1`;
+        const deleteResult = await client.query(deleteQuery, [productId]);
+        console.log('Database deletion result:', deleteResult.rowCount);
+
+        await client.query('COMMIT');  // THIS IS CRUCIAL
+
+        // Verify deletion
+        const verifyQuery = 'SELECT * FROM products WHERE id = $1';
+        const verifyResult = await client.query(verifyQuery, [productId]);
+        console.log('Verification after deletion:', verifyResult.rows);
+
+        return res.status(200).json({
+            success: true,
+            message: 'Product and all associated media deleted successfully',
+            productId
+        });
+
+    } catch (error) {
+        await client.query('ROLLBACK');
+        console.error('Complete deletion error:', error);
+        return res.status(500).json({
+            success: false,
+            message: 'Product deletion failed completely',
+            error: error.message
+        });
+    } finally {
+        client.release();
+    }
+};
+
+
+// Helper to extract public ID from URL (works for both images and videos)
+function extractPublicIdFromUrl(url) {
+    // Example: https://res.cloudinary.com/demo/image/upload/v123/sample.jpg → "sample"
+    const matches = url.match(/\/([^\/]+?)(?:\.[^\.\/]+)?$/);
+    return matches ? matches[1] : null;
+}
+
+// Helper to determine resource type from URL
+function getResourceType(url) {
+    return url.includes('/video/upload/') ? 'video' : 'image';
+}
+
+
+
+
+
+// Enhanced upload function with more debugging
+async function uploadToCloudinary(file, resourceType, folder) {
+    return new Promise((resolve, reject) => {
+        if (!file || !file.filepath) {
+            return reject(new Error('Invalid file object'));
+        }
+
+        console.log(`Uploading to Cloudinary: ${file.originalFilename || 'unknown'} to ${folder}`);
+        
+        const options = {
+            resource_type: resourceType,
+            folder: folder,
+            quality: 'auto',
+            fetch_format: 'auto',
+            timeout: 60000 // 60 seconds timeout
+        };
+
+        if (resourceType === 'video') {
+            options.resource_type = 'video';
+            options.quality = 70;
+            options.chunk_size = 6000000; // 6MB chunks for video
+        }
+
+        const uploadStream = cloudinary.uploader.upload_stream(
+            options,
+            (error, result) => {
+                // Clean up temp file regardless of success/failure
+                fs.unlink(file.filepath, (unlinkError) => {
+                    if (unlinkError) console.error('Error deleting temp file:', unlinkError);
+                });
+
+                if (error) {
+                    console.error('Cloudinary upload error:', error);
+                    reject(error);
+                } else {
+                    console.log('Upload successful:', result.secure_url);
+                    resolve(result);
+                }
+            }
+        );
+
+        // Add error handling for the file stream
+        const fileStream = fs.createReadStream(file.filepath);
+        fileStream.on('error', (err) => {
+            console.error('File stream error:', err);
+            reject(err);
+        });
+
+        fileStream.pipe(uploadStream);
+    });
+}
+
+
+// Specialized video upload function
+async function uploadVideo(file) {
+    return new Promise((resolve, reject) => {
+        const upload = cloudinary.uploader.upload_large(file.filepath, {
+            resource_type: 'video',
+            chunk_size: 6000000,
+            timeout: 120000,
+            folder: 'ecommerce/videos'
+        }, (error, result) => {
+            fs.unlink(file.filepath, () => {});
+            if (error) reject(error);
+            else resolve(result);
+        });
+    });
+}
+
+// ID generation with retry limit
+async function generateUniqueProductId() {
+    const idCheckQuery = 'SELECT 1 FROM products WHERE id = $1 LIMIT 1';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    
+        let result = '';
+        for (let i = 0; i < 11; i++) {
+            result += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+
+        try {
+            const { rowCount } = await db.query(idCheckQuery, [result]);
+            if (rowCount === 0) return result;
+        } catch (error) {
+            console.error('ID generation query error:', error);
+        }
+    
+}
+
+//Unique link endpoint generationb
+async function generateLinkEndpoint() {
+    const idCheckQuery = 'SELECT 1 FROM products WHERE link_endpoint = $1 LIMIT 1';
+    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    
+        let result = '';
+        for (let i = 0; i < 7; i++) {
+            result += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+
+        try {
+            const { rowCount } = await db.query(idCheckQuery, [result]);
+            
+            if (rowCount === 0) {
+                return result;} else{ generateLinkEndpoint() }
+        } catch (error) {
+            console.error('ID generation query error:', error);
+        }
+    
+}
+
+
+
+
+
+
+module.exports = { fetchProducts, fetchProductsAdmin, postProduct, editProduct, deleteProduct }
