@@ -142,8 +142,8 @@ const createOrder = async (req, res) => {
       currency: 'KES',
       amount: 1, //total,
       description: `Payment for order ${orderId}`,
-      callback_url: 'https://2607-41-80-118-88.ngrok-free.app/checkout/handle-ipn-callback',
-      notification_id: 'a2ece39b-dc60-43df-ae1b-db9fa0cabd5f',
+      callback_url: 'https://haklim-fashions.onrender.com/checkout/handle-ipn-callback',
+      notification_id: '01cd21c0-434c-45cc-b132-db89a8b1db1d',
       billing_address: {
         email_address: customerInfo.email,
         phone_number: customerInfo.phone,
