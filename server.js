@@ -33,6 +33,11 @@ app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
 
+// Serve admin.html for the admin panel
+app.get('/admin-b', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'admin-b.html'));
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
