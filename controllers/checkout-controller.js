@@ -558,7 +558,7 @@ await db.query(query, [salesData, pointAdditionData, transactioHistoryData, fina
       };
 
       // Send the Confirmation email
-      await transporter.sendMail(mailOptions);
+      //await transporter.sendMail(mailOptions);
 
 
       console.log(`Transaction details inserted successfully for Order ID: ${OrderTrackingId}`);
