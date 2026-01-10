@@ -5,7 +5,7 @@ const productRoutes = require('./routes/product-routes');
 const crudRoutes = require('./routes/crud-routes');
 const checkoutRoutes = require('./routes/checkout-routes');
 const PORT = 4000;
-
+ 
 
 app.use(express.static(path.join(__dirname, 'public')));
 // For JSON:
@@ -25,8 +25,13 @@ app.get('/awake', (req, res) => {
 
 // Serve index.html for the main site
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'new-ux.html'));
 });
+
+app.get('/old-page', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'old-ux.html'));
+});
+
 
 // Serve admin.html for the admin panel
 app.get('/admin', (req, res) => {
